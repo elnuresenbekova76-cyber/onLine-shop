@@ -1,110 +1,321 @@
 <!DOCTYPE html>
-<html lang="ky">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fashion Shop</title>
-<link rel="stylesheet" href="style.css">
+<title>BELLA SHOP — Стиль и элегантность</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#fff8fa;color:#292329}
-header{background:#fff;padding:20px 6%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px #ddd}
-.logo{font-size:25px;font-weight:bold;color:#a23e68}
-nav a{margin:0 10px;color:#333;text-decoration:none}
-.hero{padding:65px 20px;text-align:center;background:linear-gradient(120deg,#f8dce7,#fceef3)}
-.hero h1{font-size:38px;color:#8f3159}
-.hero p{font-size:18px}
-button{background:#a23e68;color:white;border:0;padding:12px 22px;border-radius:7px;cursor:pointer}
-section{padding:35px 6%}
-h2{text-align:center;color:#8f3159}
-.categories,.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px}
-.category,.product{background:white;padding:18px;border-radius:12px;text-align:center;box-shadow:0 2px 12px #eadde2}
-.product img{width:100%;height:190px;object-fit:cover;border-radius:8px}
-.price{color:#a23e68;font-weight:bold;font-size:19px}
-footer{background:#292329;color:white;text-align:center;padding:25px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#fffdfb;color:#30251e}
+a{text-decoration:none;color:inherit}
+.top{background:#e9d8c9;padding:11px 5%;display:flex;justify-content:space-between;font-size:13px}
+header{background:white;padding:18px 5%;display:flex;align-items:center;justify-content:space-between;gap:15px;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px #0001}
+.logo{font-family:Georgia,serif;font-size:30px;font-weight:bold;color:#79583f;letter-spacing:2px}
+.logo small{display:block;font-family:Arial;font-size:11px;text-align:center;font-weight:normal;letter-spacing:1px}
+nav{display:flex;gap:18px;font-size:14px}
+nav a:hover{color:#a77c5b}
+.search{padding:11px 14px;border:1px solid #e4d5c9;border-radius:25px;width:170px}
+.btn{background:#987252;color:white;padding:12px 20px;border:0;border-radius:25px;cursor:pointer;font-weight:bold}
+.btn:hover{background:#715238}
+.hero{min-height:370px;background:linear-gradient(110deg,#eee0d4,#f8eee7 55%,#dfc9b8);display:flex;align-items:center;padding:45px 9%;position:relative;overflow:hidden}
+.hero-text{max-width:520px;z-index:1}
+.hero h1{font-family:Georgia,serif;font-size:57px;color:#62442f;margin:15px 0}
+.hero p{font-size:18px;margin-bottom:22px;line-height:1.6}
+.hero img{position:absolute;right:7%;height:95%;bottom:0;max-width:43%;object-fit:contain;mix-blend-mode:multiply}
+section{padding:45px 5%}
+.section-title{text-align:center;font-family:Georgia,serif;font-size:30px;color:#654831;margin-bottom:28px}
+.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.category{background:#f3e9e1;border-radius:14px;overflow:hidden;text-align:center;cursor:pointer}
+.category:hover{transform:translateY(-4px)}
+.category img{width:100%;height:130px;object-fit:cover}
+.category h3{padding:14px 5px;font-size:15px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.product{background:white;border:1px solid #eadfd6;border-radius:14px;padding:10px;box-shadow:0 4px 15px #7b563010;position:relative}
+.product img{width:100%;height:235px;object-fit:cover;border-radius:10px}
+.product h3{font-size:16px;margin:12px 3px 7px}
+.price{font-weight:bold;color:#886044;font-size:18px;margin:8px 3px}
+.old{color:#999;text-decoration:line-through;font-size:13px;margin-left:7px}
+.product .btn{width:100%;margin-top:8px}
+.heart{position:absolute;right:17px;top:17px;background:white;border:0;border-radius:50%;width:35px;height:35px;font-size:20px;cursor:pointer}
+.discount{position:absolute;left:17px;top:17px;background:#a77c5b;color:white;padding:6px 10px;border-radius:15px;font-size:12px}
+.promo{background:#eee0d4;text-align:center;border-radius:18px;padding:35px 15px}
+.promo h2{font-family:Georgia,serif;font-size:30px;margin-bottom:10px;color:#62442f}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;text-align:center}
+.service{background:#f7f0ea;padding:22px 10px;border-radius:12px}
+.service strong{display:block;margin:8px}
+footer{background:#332820;color:white;padding:35px 5%;text-align:center}
+footer p{margin:10px}
+.cart-panel{position:fixed;right:-420px;top:0;width:360px;max-width:90%;height:100vh;background:white;z-index:30;padding:25px;box-shadow:-5px 0 25px #0002;transition:.3s;overflow:auto}
+.cart-panel.open{right:0}
+.cart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.cart-item{display:flex;justify-content:space-between;gap:10px;padding:13px 0;border-bottom:1px solid #eee}
+.cart-item button{border:0;background:none;color:#79583f;cursor:pointer;font-size:17px}
+.total{font-size:20px;font-weight:bold;margin:22px 0}
+.close{font-size:25px;border:0;background:none;cursor:pointer}
+.empty{text-align:center;color:#888;padding:30px 0}
+@media(max-width:850px){
+header{flex-wrap:wrap}
+nav{order:3;width:100%;justify-content:center;gap:12px;flex-wrap:wrap}
+.hero{min-height:330px}
+.hero h1{font-size:40px}
+.hero img{opacity:.35;max-width:65%;right:0}
+.categories{grid-template-columns:repeat(3,1fr)}
+.products{grid-template-columns:repeat(2,1fr)}
+.services{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+.top{font-size:10px}
+.logo{font-size:25px}
+.search{width:130px}
+.hero{padding:35px 7%;min-height:300px}
+.hero h1{font-size:35px}
+.hero p{font-size:15px}
+section{padding:32px 4%}
+.categories{grid-template-columns:repeat(2,1fr);gap:10px}
+.category img{height:110px}
+.products{gap:10px}
+.product img{height:175px}
+.product h3{font-size:14px}
+.price{font-size:15px}
+.section-title{font-size:25px}
+}
 </style>
 </head>
 <body>
+
+<div class="top">
+<span>🚚 Бесплатная доставка от 2000 сом</span>
+<span>♡ Скидки до 50% ♡</span>
+</div>
+
 <header>
-<div class="logo">FASHION SHOP</div>
+<div class="logo">BELLA SHOP<small>СТИЛЬ • КАЧЕСТВО • ЭЛЕГАНТНОСТЬ</small></div>
 <nav>
-<a href="#home">Башкы бет</a>
-<a href="#categories">Категориялар</a>
-<a href="#products">Товарлар</a>
-<a href="#contact">Байланыш</a>
+<a href="#home">Главная</a>
+<a href="#categories">Категории</a>
+<a href="#products">Каталог</a>
+<a href="#about">О нас</a>
 </nav>
+<input class="search" id="search" placeholder="Поиск товаров..." oninput="searchProducts()">
+<button class="btn" onclick="toggleCart()">🛒 Корзина (<span id="count">0</span>)</button>
 </header>
 
 <div class="hero" id="home">
-<h1>FASHION SHOP</h1>
-<p>Сиздин стилиңиз — биздин тандообуз!</p>
-<p>Кооз кийимдерди бизден табыңыз</p>
-<a href="#products"><button>Сатып алуу</button></a>
+<div class="hero-text">
+<p>НОВАЯ КОЛЛЕКЦИЯ ♡</p>
+<h1>BELLA SHOP</h1>
+<p>Откройте свой неповторимый стиль.<br>Красота начинается с деталей!</p>
+<a href="#products" class="btn">Перейти к покупкам →</a>
+</div>
+<img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800" alt="Модный образ">
 </div>
 
 <section id="categories">
-<h2>Категориялар</h2>
+<h2 class="section-title">♡ Наши категории ♡</h2>
 <div class="categories">
-<div class="category">👗<h3>Көйнөктөр</h3></div>
-<div class="category">👚<h3>Блузкалар</h3></div>
-<div class="category">🧥<h3>Курткалар</h3></div>
-<div class="category">👖<h3>Шымдар</h3></div>
-<div class="category">👜<h3>Сумкалар</h3></div>
+<div class="category" onclick="filterCategory('Платья')">
+<img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400" alt="Платья">
+<h3>Платья</h3>
+</div>
+<div class="category" onclick="filterCategory('Блузки')">
+<img src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=400" alt="Блузки">
+<h3>Блузки</h3>
+</div>
+<div class="category" onclick="filterCategory('Куртки')">
+<img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=400" alt="Куртки">
+<h3>Куртки</h3>
+</div>
+<div class="category" onclick="filterCategory('Брюки')">
+<img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400" alt="Брюки">
+<h3>Брюки</h3>
+</div>
+<div class="category" onclick="filterCategory('Сумки')">
+<img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400" alt="Сумки">
+<h3>Сумки</h3>
+</div>
 </div>
 </section>
 
 <section id="products">
-<h2>Жаңы товарлар</h2>
-<div class="products">
-<div class="product">
-<img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500" alt="Көйнөк">
-<h3>Сулуу көйнөк</h3><p class="price">1500 сом</p>
-<button onclick="addCart('Сулуу көйнөк',1500)">Себетке кошуу</button>
+<h2 class="section-title">✧ Новинки магазина ✧</h2>
+<div class="products" id="productList">
+
+<div class="product" data-name="Элегантное платье" data-category="Платья" data-price="1500">
+<span class="discount">-20%</span>
+<button class="heart" onclick="favorite(this)">♡</button>
+<img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=500" alt="Платье">
+<h3>Элегантное платье</h3>
+<p class="price">1500 сом <span class="old">1900 сом</span></p>
+<button class="btn" onclick="addCart(this)">В корзину</button>
 </div>
-<div class="product">
-<img src="https://images.unsplash.com/photo-1551163943-3f6a855d1153?w=500" alt="Блузка">
-<h3>Блузка</h3><p class="price">900 сом</p>
-<button onclick="addCart('Блузка',900)">Себетке кошуу</button>
+
+<div class="product" data-name="Уютный свитер" data-category="Блузки" data-price="1200">
+<span class="discount">-15%</span>
+<button class="heart" onclick="favorite(this)">♡</button>
+<img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500" alt="Свитер">
+<h3>Уютный свитер</h3>
+<p class="price">1200 сом <span class="old">1400 сом</span></p>
+<button class="btn" onclick="addCart(this)">В корзину</button>
 </div>
-<div class="product">
-<img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=500" alt="Куртка">
-<h3>Куртка</h3><p class="price">2500 сом</p>
-<button onclick="addCart('Куртка',2500)">Себетке кошуу</button>
+
+<div class="product" data-name="Стильная куртка" data-category="Куртки" data-price="2500">
+<span class="discount">-25%</span>
+<button class="heart" onclick="favorite(this)">♡</button>
+<img src="https://images.unsplash.com/photo-1544923246-77307dd654cb?w=500" alt="Куртка">
+<h3>Стильная куртка</h3>
+<p class="price">2500 сом <span class="old">3300 сом</span></p>
+<button class="btn" onclick="addCart(this)">В корзину</button>
 </div>
-<div class="product">
-<img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500" alt="Шым">
-<h3>Модалуу шым</h3><p class="price">1200 сом</p>
-<button onclick="addCart('Модалуу шым',1200)">Себетке кошуу</button>
+
+<div class="product" data-name="Классические брюки" data-category="Брюки" data-price="1300">
+<span class="discount">-20%</span>
+<button class="heart" onclick="favorite(this)">♡</button>
+<img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500" alt="Брюки">
+<h3>Классические брюки</h3>
+<p class="price">1300 сом <span class="old">1600 сом</span></p>
+<button class="btn" onclick="addCart(this)">В корзину</button>
 </div>
+
+<div class="product" data-name="Элегантная сумка" data-category="Сумки" data-price="1800">
+<button class="heart" onclick="favorite(this)">♡</button>
+<img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500" alt="Сумка">
+<h3>Элегантная сумка</h3>
+<p class="price">1800 сом</p>
+<button class="btn" onclick="addCart(this)">В корзину</button>
 </div>
+
+<div class="product" data-name="Вечернее платье" data-category="Платья" data-price="2200">
+<button class="heart" onclick="favorite(this)">♡</button>
+<img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500" alt="Вечернее платье">
+<h3>Вечернее платье</h3>
+<p class="price">2200 сом</p>
+<button class="btn" onclick="addCart(this)">В корзину</button>
+</div>
+
+<div class="product" data-name="Белая блузка" data-category="Блузки" data-price="950">
+<button class="heart" onclick="favorite(this)">♡</button>
+<img src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=500" alt="Блузка">
+<h3>Белая блузка</h3>
+<p class="price">950 сом</p>
+<button class="btn" onclick="addCart(this)">В корзину</button>
+</div>
+
+<div class="product" data-name="Повседневная сумка" data-category="Сумки" data-price="1600">
+<button class="heart" onclick="favorite(this)">♡</button>
+<img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500" alt="Сумка">
+<h3>Повседневная сумка</h3>
+<p class="price">1600 сом</p>
+<button class="btn" onclick="addCart(this)">В корзину</button>
+</div>
+
+</div>
+<p id="noResults" class="empty" style="display:none">Товары не найдены</p>
 </section>
 
 <section>
-<h2>🛒 Себет</h2>
-<div id="cart">Азырынча товар жок</div>
-<h3 id="total">Жалпы: 0 сом</h3>
+<div class="promo">
+<h2>♡ Скидка 10% на первый заказ ♡</h2>
+<p>Порадуйте себя стильными новинками!</p>
+<br>
+<a href="#products" class="btn">Выбрать товары</a>
+</div>
 </section>
 
-<section id="contact">
-<h2>Биз менен байланыш</h2>
-<p style="text-align:center">Заказ берүү үчүн бизге кайрылыңыз</p>
+<section id="about">
+<h2 class="section-title">Почему выбирают BELLA SHOP?</h2>
+<div class="services">
+<div class="service">💎<strong>Высокое качество</strong><p>Внимание к каждой детали</p></div>
+<div class="service">🎧<strong>Забота о клиентах</strong><p>Всегда готовы помочь</p></div>
+<div class="service">🚚<strong>Удобная доставка</strong><p>Доставка до вашего адреса</p></div>
+<div class="service">♡<strong>Стиль и комфорт</strong><p>Красота в каждом образе</p></div>
+</div>
 </section>
 
 <footer>
-<p>© 2026 FASHION SHOP</p>
-<p>Бизди тандаганыңыз үчүн рахмат!</p>
+<h2>BELLA SHOP</h2>
+<p>Стиль. Качество. Элегантность.</p>
+<p>Спасибо, что выбираете нас ♡</p>
+<p>© 2026 BELLA SHOP. Все права защищены.</p>
+<p>Свяжитесь с нами: Instagram | WhatsApp</p>
 </footer>
 
+<div class="cart-panel" id="cartPanel">
+<div class="cart-head">
+<h2>🛒 Моя корзина</h2>
+<button class="close" onclick="toggleCart()">×</button>
+</div>
+<div id="cartItems"><p class="empty">Ваша корзина пока пуста</p></div>
+<div class="total" id="total">Итого: 0 сом</div>
+<button class="btn" style="width:100%" onclick="order()">Оформить заказ →</button>
+</div>
+
 <script>
-let total=0;
-function addCart(name,price){
-let cart=document.getElementById('cart');
-if(cart.innerText==='Азырынча товар жок') cart.innerHTML='';
-let item=document.createElement('p');
-item.textContent=name+' — '+price+' сом';
-cart.appendChild(item);
-total+=price;
-document.getElementById('total').textContent='Жалпы: '+total+' сом';
+let cart=[];
+function addCart(button){
+let product=button.closest('.product');
+let name=product.dataset.name;
+let price=Number(product.dataset.price);
+let found=cart.find(item=>item.name===name);
+if(found){found.qty++}else{cart.push({name,price,qty:1})}
+renderCart();
+}
+function renderCart(){
+let items=document.getElementById('cartItems');
+let count=cart.reduce((sum,item)=>sum+item.qty,0);
+let total=cart.reduce((sum,item)=>sum+item.price*item.qty,0);
+document.getElementById('count').textContent=count;
+document.getElementById('total').textContent='Итого: '+total+' сом';
+if(cart.length===0){items.innerHTML='<p class="empty">Ваша корзина пока пуста</p>';return}
+items.innerHTML=cart.map((item,index)=>`
+<div class="cart-item">
+<div><strong>${item.name}</strong><p>${item.price} сом × ${item.qty}</p></div>
+<div>
+<button onclick="changeQty(${index},-1)">−</button>
+${item.qty}
+<button onclick="changeQty(${index},1)">+</button>
+<button onclick="removeItem(${index})">🗑️</button>
+</div>
+</div>`).join('');
+}
+function changeQty(index,amount){
+cart[index].qty+=amount;
+if(cart[index].qty<=0)cart.splice(index,1);
+renderCart();
+}
+function removeItem(index){cart.splice(index,1);renderCart()}
+function toggleCart(){document.getElementById('cartPanel').classList.toggle('open')}
+function favorite(button){
+button.textContent=button.textContent==='♡'?'♥️':'♡';
+button.style.color=button.textContent==='♥️'?'#a34b4b':'#30251e';
+}
+function searchProducts(){
+let query=document.getElementById('search').value.toLowerCase();
+let products=document.querySelectorAll('.product');
+let visible=0;
+products.forEach(product=>{
+let match=product.dataset.name.toLowerCase().includes(query);
+product.style.display=match?'block':'none';
+if(match)visible++;
+});
+document.getElementById('noResults').style.display=visible?'none':'block';
+}
+function filterCategory(category){
+document.getElementById('search').value='';
+let products=document.querySelectorAll('.product');
+let visible=0;
+products.forEach(product=>{
+let match=product.dataset.category===category;
+product.style.display=match?'block':'none';
+if(match)visible++;
+});
+document.getElementById('noResults').style.display=visible?'none':'block';
+document.getElementById('products').scrollIntoView({behavior:'smooth'});
+}
+function order(){
+if(cart.length===0){alert('Сначала добавьте товар в корзину!');return}
+let details=cart.map(item=>item.name+' — '+item.qty+' шт.').join('\n');
+let total=cart.reduce((sum,item)=>sum+item.price*item.qty,0);
+alert('Ваш заказ сформирован!\n'+details+'\nИтого: '+total+' сом\nДля отправки заказа нужно добавить контакты магазина.');
 }
 </script>
 </body>
