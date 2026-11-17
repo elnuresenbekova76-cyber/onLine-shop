@@ -1,33 +1,111 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ky">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Менин кийим дүкөнүм</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion Shop</title>
+<link rel="stylesheet" href="style.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#fff8fa;color:#292329}
+header{background:#fff;padding:20px 6%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px #ddd}
+.logo{font-size:25px;font-weight:bold;color:#a23e68}
+nav a{margin:0 10px;color:#333;text-decoration:none}
+.hero{padding:65px 20px;text-align:center;background:linear-gradient(120deg,#f8dce7,#fceef3)}
+.hero h1{font-size:38px;color:#8f3159}
+.hero p{font-size:18px}
+button{background:#a23e68;color:white;border:0;padding:12px 22px;border-radius:7px;cursor:pointer}
+section{padding:35px 6%}
+h2{text-align:center;color:#8f3159}
+.categories,.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px}
+.category,.product{background:white;padding:18px;border-radius:12px;text-align:center;box-shadow:0 2px 12px #eadde2}
+.product img{width:100%;height:190px;object-fit:cover;border-radius:8px}
+.price{color:#a23e68;font-weight:bold;font-size:19px}
+footer{background:#292329;color:white;text-align:center;padding:25px}
+</style>
 </head>
 <body>
+<header>
+<div class="logo">FASHION SHOP</div>
+<nav>
+<a href="#home">Башкы бет</a>
+<a href="#categories">Категориялар</a>
+<a href="#products">Товарлар</a>
+<a href="#contact">Байланыш</a>
+</nav>
+</header>
 
-    <h1>ELNURA SHOP</h1>
-    <p>Биздин кийим дүкөнүнө кош келиңиз!</p>
+<div class="hero" id="home">
+<h1>FASHION SHOP</h1>
+<p>Сиздин стилиңиз — биздин тандообуз!</p>
+<p>Кооз кийимдерди бизден табыңыз</p>
+<a href="#products"><button>Сатып алуу</button></a>
+</div>
 
-    <h2>Биздин товарлар</h2>
-    <img src="https://placehold.co/200x250?text=Dress" width="200">
-    <p>👗 Көйнөк / Платье — 1500 сом</p>
-    <img src="https://placehold.co/200x250?text=Blouse" width="200">
-<p>👚 Блузка / Блузка — 1200 сом</p>
-    <img src="https://placehold.co/200x250?text=Jacket" width="200">
-<p>🧥 Куртка / Куртка — 2500 сом</p>
-    <img src="https://placehold.co/200x250?text=Bag" width="200">
-<p>👜 Сумка / Сумка — 1800 сом</p>
+<section id="categories">
+<h2>Категориялар</h2>
+<div class="categories">
+<div class="category">👗<h3>Көйнөктөр</h3></div>
+<div class="category">👚<h3>Блузкалар</h3></div>
+<div class="category">🧥<h3>Курткалар</h3></div>
+<div class="category">👖<h3>Шымдар</h3></div>
+<div class="category">👜<h3>Сумкалар</h3></div>
+</div>
+</section>
 
-<p>👗 Көйнөктөр / Платья</p>
-<p>👚 Блузкалар / Блузки</p>
-<p>🧥 Курткалар / Куртки</p>
-<p>👖 Шымдар / Брюки</p>
-<p>👜 Сумкалар / Сумки</p>
-<p>👕 Футболкалар / Футболки</p>
-<p>👟 Бут кийимдер / Обувь</p>  
+<section id="products">
+<h2>Жаңы товарлар</h2>
+<div class="products">
+<div class="product">
+<img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500" alt="Көйнөк">
+<h3>Сулуу көйнөк</h3><p class="price">1500 сом</p>
+<button onclick="addCart('Сулуу көйнөк',1500)">Себетке кошуу</button>
+</div>
+<div class="product">
+<img src="https://images.unsplash.com/photo-1551163943-3f6a855d1153?w=500" alt="Блузка">
+<h3>Блузка</h3><p class="price">900 сом</p>
+<button onclick="addCart('Блузка',900)">Себетке кошуу</button>
+</div>
+<div class="product">
+<img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=500" alt="Куртка">
+<h3>Куртка</h3><p class="price">2500 сом</p>
+<button onclick="addCart('Куртка',2500)">Себетке кошуу</button>
+</div>
+<div class="product">
+<img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500" alt="Шым">
+<h3>Модалуу шым</h3><p class="price">1200 сом</p>
+<button onclick="addCart('Модалуу шым',1200)">Себетке кошуу</button>
+</div>
+</div>
+</section>
 
+<section>
+<h2>🛒 Себет</h2>
+<div id="cart">Азырынча товар жок</div>
+<h3 id="total">Жалпы: 0 сом</h3>
+</section>
+
+<section id="contact">
+<h2>Биз менен байланыш</h2>
+<p style="text-align:center">Заказ берүү үчүн бизге кайрылыңыз</p>
+</section>
+
+<footer>
+<p>© 2026 FASHION SHOP</p>
+<p>Бизди тандаганыңыз үчүн рахмат!</p>
+</footer>
+
+<script>
+let total=0;
+function addCart(name,price){
+let cart=document.getElementById('cart');
+if(cart.innerText==='Азырынча товар жок') cart.innerHTML='';
+let item=document.createElement('p');
+item.textContent=name+' — '+price+' сом';
+cart.appendChild(item);
+total+=price;
+document.getElementById('total').textContent='Жалпы: '+total+' сом';
+}
+</script>
 </body>
 </html>
