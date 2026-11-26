@@ -3,144 +3,328 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brighloss — Магазин косметики</title>
+<title>Brighloss Beauty Shop</title>
 <style>
-:root{--pink:#a95b87;--light:#f5eaf1;--pale:#fbf6f9;--ink:#29232a;--muted:#88818a}
-*{box-sizing:border-box}body{margin:0;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background:#fff}
-button,input,select{font:inherit}.topline{height:30px;background:#f2e8ef;color:#514750;font:11px Arial,sans-serif;display:flex;align-items:center;justify-content:space-between;padding:0 max(calc((100% - 1120px)/2),22px)}
-.topline a{color:inherit;text-decoration:none;margin-left:24px}.head{max-width:1120px;margin:auto;height:76px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;padding:0 22px}
-.search{display:flex;max-width:245px;background:#f6f5f6;height:38px}.search input{border:0;background:transparent;padding:0 12px;min-width:0;width:100%;outline:none;font:12px Arial}.search button{border:0;background:transparent;padding:0 12px;cursor:pointer}
-.logo{text-align:center;font-size:31px;color:#171318;white-space:nowrap}.logo b{font-weight:400}.logo-mark{color:var(--pink);font-size:35px;vertical-align:middle}
-.actions{display:flex;justify-content:flex-end;gap:18px;font:24px Arial}.action{position:relative;cursor:pointer;border:0;background:none;color:#252027}.count{position:absolute;top:-5px;right:-8px;background:var(--pink);color:white;border-radius:50%;font:10px Arial;min-width:16px;height:16px;display:grid;place-items:center}
-nav{background:var(--pink);color:white;min-height:34px;display:flex;justify-content:center;align-items:center;gap:0;font:12px Arial}
-nav a{color:white;text-decoration:none;padding:11px 22px;border-right:1px solid #ffffff35}nav a:hover{background:#91466f}
-.banner{background:#f3e8ef;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 max(calc((100% - 1120px)/2),22px)}
-.banner h1{font-size:25px;font-weight:normal;margin:0}.crumb{font:11px Arial;color:#777}
-main{max-width:1120px;margin:52px auto 70px;padding:0 22px;display:grid;grid-template-columns:190px 1fr;gap:28px}
-.sidebar h3{font-size:15px;margin:0 0 14px}.side-section{padding:0 0 18px;margin-bottom:18px;border-bottom:1px solid #eee}
-.cat{display:flex;justify-content:space-between;align-items:center;font:12px Arial;color:#6d6670;padding:5px 0;cursor:pointer}.cat:hover{color:var(--pink)}
-.range{width:100%;accent-color:var(--pink)}.filter-btn{background:var(--pink);color:white;border:0;padding:8px 18px;font:11px Arial;cursor:pointer;margin-top:8px}
-.small-note{font:11px Arial;color:#777;margin-top:8px}.checks label{display:flex;align-items:center;gap:6px;font:12px Arial;color:#777;padding:4px 0;cursor:pointer}.checks input{accent-color:var(--pink);margin:0}
-.tags{display:flex;flex-wrap:wrap;gap:6px}.tag{border:1px solid #eee;padding:6px 8px;font:11px Arial;color:#777;cursor:pointer;background:#fff}.tag.active,.tag:hover{background:var(--pink);color:#fff;border-color:var(--pink)}
-.toolbar{display:flex;justify-content:space-between;align-items:center;margin:0 0 25px;font:12px Arial;color:#777}.toolbar select{border:0;color:#777;background:white;padding:5px;outline:none}.view{font-size:20px;color:#999;margin-left:8px}
-.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 18px}
-.product{position:relative;text-align:center;min-width:0}.photo{height:182px;background:#f7f7f7;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-.photo img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .25s}.product:hover .photo img{transform:scale(1.06)}
-.flag{position:absolute;top:10px;left:9px;background:var(--pink);color:white;padding:6px 9px;font:10px Arial;z-index:1}.flag.sold{top:38%;left:50%;transform:translate(-50%,-50%);font-size:11px;padding:7px 12px}
-.heart{position:absolute;right:8px;top:8px;background:#fff;border:0;border-radius:50%;width:29px;height:29px;cursor:pointer;color:#9b5b80;font:18px Arial;opacity:0;transition:.2s}.product:hover .heart,.heart.liked{opacity:1}.heart.liked{color:#c22}
-.stars{color:#e5b92f;font:13px Arial;letter-spacing:1px;margin:9px 0 5px}.stars .off{color:#ddd}
-.name{font:12px Arial;line-height:1.4;min-height:30px;color:#38323a}.price{font:13px Arial;color:var(--pink);margin-top:5px}.old{color:#aaa;text-decoration:line-through;font-size:11px;margin-right:5px}
-.add{margin-top:8px;border:1px solid var(--pink);background:white;color:var(--pink);padding:7px 12px;font:10px Arial;cursor:pointer;opacity:0;transition:.2s}.product:hover .add{opacity:1}.add:hover{background:var(--pink);color:white}
-.empty{grid-column:1/-1;text-align:center;padding:50px;color:#888;font:14px Arial}
-footer{background:#f7edf3;text-align:center;padding:28px;color:#776775;font:12px Arial}
-@media(max-width:800px){.head{grid-template-columns:1fr auto;height:auto;padding:16px 18px;gap:12px}.search{grid-column:1/-1;grid-row:2;max-width:none}.logo{text-align:left;font-size:26px}.actions{gap:10px}.topline{padding:0 14px}.topline span:first-child{max-width:65%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}nav{overflow:auto;justify-content:flex-start;white-space:nowrap}nav a{padding:11px 13px}.banner{height:65px;padding:0 18px}main{margin:28px auto;grid-template-columns:1fr;padding:0 15px;gap:22px}.sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px}.side-section{margin:0}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}.photo{height:190px}.toolbar{margin-bottom:16px}}
-@media(max-width:420px){.photo{height:155px}.logo{font-size:23px}.banner h1{font-size:22px}.sidebar{grid-template-columns:1fr 1fr}.name{font-size:11px}.topline{font-size:10px}}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:#393039;background:#fff}
+header{padding:20px 5%;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.logo{font-family:Georgia,serif;font-size:32px;color:#9e6480}
+.search{padding:12px;border:1px solid #eadde5;border-radius:25px;width:260px}
+button{cursor:pointer}
+nav{background:#a87591;padding:15px;text-align:center}
+nav a{color:white;text-decoration:none;margin:0 15px;font-size:14px}
+.banner{background:#f5eaf0;padding:35px 6%;display:flex;justify-content:space-between;align-items:center}
+.banner h1{font-family:Georgia,serif;font-size:32px;font-weight:normal}
+main{display:grid;grid-template-columns:210px 1fr;gap:25px;padding:35px 5%}
+.sidebar h3{font-family:Georgia,serif;border-bottom:1px solid #eadde5;padding-bottom:10px}
+.sidebar button{display:block;background:none;border:0;padding:9px 0;color:#665b64;text-align:left}
+.sidebar button:hover{color:#a75d83}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:25px;flex-wrap:wrap}
+select{padding:10px;border:1px solid #eadde5;background:white}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 15px}
+.product{text-align:center;position:relative;border:1px solid #f2eaf0;padding-bottom:15px}
+.product img{width:100%;height:190px;object-fit:cover;background:#f8f2f5}
+.product h4{font-size:13px;font-weight:normal;min-height:32px;padding:0 7px}
+.price{color:#a45d82;font-weight:bold}
+.old{color:#aaa;text-decoration:line-through;font-size:12px}
+.add{background:#a87591;color:white;border:0;padding:10px 15px;margin-top:8px}
+.add:hover{background:#80506c}
+.like{position:absolute;right:9px;top:9px;border:0;background:white;border-radius:50%;font-size:20px;color:#a87591;width:32px;height:32px}
+.like.active{color:#e33}
+.label{position:absolute;left:8px;top:8px;background:#a87591;color:white;padding:5px 8px;font-size:10px}
+footer{background:#f5eaf0;text-align:center;padding:25px;color:#80506c}
+@media(max-width:850px){
+main{grid-template-columns:1fr}
+.sidebar{display:flex;gap:15px;flex-wrap:wrap}
+.products{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:550px){
+.products{grid-template-columns:repeat(2,minmax(0,1fr))}
+.product img{height:160px}
+.banner h1{font-size:24px}
+}
 </style>
 </head>
 <body>
-<div class="topline"><span>Бесплатная доставка по стране по промокоду «Косметика 2023»</span><span><a href="#">Отследить заказ</a><a href="#">Помощь</a></span></div>
-<header class="head">
-  <form class="search" id="searchForm"><input id="search" placeholder="Поиск товаров..." aria-label="Search products"><button aria-label="Search">⌕</button></form>
-  <div class="logo"><span class="logo-mark">❀</span><b>Brighloss</b></div>
-  <div class="actions"><button class="action" title="Избранное" onclick="showFavorites()">♡</button><button class="action" title="Профиль">♙</button><button class="action" title="Корзина" onclick="showCart()">♧<span class="count" id="cartCount">0</span></button></div>
+
+<header>
+<div class="logo">❀ Brighloss</div>
+<input class="search" id="search" placeholder="Поиск косметики...">
+<div>
+<button onclick="showFavorites()">♡ Избранное</button>
+<button onclick="showCart()">🛒 Корзина <span id="cartCount">0</span></button>
+</div>
 </header>
-<nav><a href="#">Категории⌄</a><a href="#">Маски для лица</a><a href="#">Магазин⌄</a><a href="#">Страницы⌄</a><a href="#">Разделы⌄</a><a href="#">Контакты</a><a href="#">Блог</a></nav>
-<section class="banner"><h1>Магазин</h1><div class="crumb">Главная / Магазин</div></section>
+
+<nav>
+<a href="#" onclick="filterCategory('Все')">Главная</a>
+<a href="#" onclick="filterCategory('Уход за лицом')">Уход за лицом</a>
+<a href="#" onclick="filterCategory('Макияж')">Макияж</a>
+<a href="#" onclick="filterCategory('Губы')">Губы</a>
+<a href="#" onclick="filterCategory('Волосы')">Волосы</a>
+<a href="#" onclick="filterCategory('Парфюм')">Парфюм</a>
+</nav>
+
+<section class="banner">
+<h1>Магазин косметики</h1>
+<span>Главная / Магазин</span>
+</section>
+
 <main>
 <aside class="sidebar">
-  <section class="side-section"><h3>Категории товаров</h3>
-    <div class="cat" data-cat="Кремы для лица">Кремы для лица <b>＋</b></div>
-    <div class="cat" data-cat="Тени для век">Тени для век <b>＋</b></div>
-    <div class="cat" data-cat="Кисти для макияжа">Кисти для макияжа <b>＋</b></div>
-    <div class="cat" data-cat="Помады">Помады <b>＋</b></div>
-    <div class="cat" data-cat="Уход за кожей">Уход за кожей <b>＋</b></div>
-  </section>
-  <section class="side-section"><h3>Фильтр по цене</h3><input class="range" id="priceRange" type="range" min="10" max="100" value="100"><button class="filter-btn" onclick="render()">ФИЛЬТРОВАТЬ</button><div class="small-note" id="priceLabel">Цена: $10 — $100</div></section>
-  <section class="side-section"><h3>Фильтр по цвету</h3><div class="checks" id="colors">
-    <label><input type="checkbox" value="Синий"> Синий (8)</label><label><input type="checkbox" value="Серый"> Серый (3)</label><label><input type="checkbox" value="Зелёный"> Зелёный (4)</label><label><input type="checkbox" value="Красный"> Красный (6)</label><label><input type="checkbox" value="Жёлтый"> Жёлтый (1)</label><label><input type="checkbox" value="Чёрный"> Чёрный (3)</label><label><input type="checkbox" value="Коричневый"> Коричневый (1)</label>
-  </div></section>
-  <section class="side-section"><h3>Фильтр по размеру</h3><div class="checks"><label><input type="checkbox"> Большой (3)</label><label><input type="checkbox"> Средний (4)</label><label><input type="checkbox"> Маленький (3)</label></div></section>
-  <section class="side-section"><h3>Метки товаров</h3><div class="tags"><button class="tag">аксессуары</button><button class="tag">новинки</button><button class="tag">популярное</button><button class="tag">покупки</button><button class="tag">уход</button></div></section>
-  <section class="side-section"><h3>Фильтр по рейтингу</h3><div class="checks"><label><input type="checkbox" value="5"> ⭐⭐⭐⭐⭐</label><label><input type="checkbox" value="4"> ⭐⭐⭐⭐</label><label><input type="checkbox" value="3"> ⭐⭐⭐</label></div></section>
+<h3>Категории</h3>
+<button onclick="filterCategory('Все')">Все товары</button>
+<button onclick="filterCategory('Уход за лицом')">Уход за лицом</button>
+<button onclick="filterCategory('Макияж')">Макияж</button>
+<button onclick="filterCategory('Губы')">Помады и блески</button>
+<button onclick="filterCategory('Глаза')">Для глаз</button>
+<button onclick="filterCategory('Волосы')">Уход за волосами</button>
+<button onclick="filterCategory('Парфюм')">Парфюм</button>
 </aside>
+
 <section>
-  <div class="toolbar"><span id="resultCount">Показаны все 150 товаров</span><div><select id="sort"><option value="default">Сортировка по умолчанию</option><option value="low">Сначала дешевле</option><option value="high">Сначала дороже</option><option value="name">По названию</option></select><span class="view">▦ ▫️</span></div></div>
-  <div class="products" id="products"></div>
+<div class="toolbar">
+<span id="count">150 товаров</span>
+<select id="sort">
+<option value="default">По умолчанию</option>
+<option value="low">Сначала дешевле</option>
+<option value="high">Сначала дороже</option>
+</select>
+</div>
+<div class="products" id="products"></div>
 </section>
 </main>
-<footer>BRIGHLOSS · Красота в каждой детали</footer>
-<script>
-const items=[
-["Дышащий лак для ногтей Andrea",25,4,"Кремы для лица","Розовый","https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500"],
-["Очищающая пенка Botanicals",20,5,"Уход за кожей","Зелёный","https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500"],
-["Тональный крем Clinique",45,4,"Кремы для лица","Коричневый","https://images.unsplash.com/photo-1631730359585-38a4935cbec4?w=500"],
-["Мягкий отшелушивающий скраб",90,3,"Уход за кожей","Синий","https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=500"],
-["Очищающее масло Elatuz",55,4,"Уход за кожей","Жёлтый","https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=500",65],
-["Гель для бровей и ресниц",20,5,"Кисти для макияжа","Чёрный","https://images.unsplash.com/photo-1583241800698-e8ab01830a5d?w=500",30],
-["Тональная основа Facefinity",25,4,"Кремы для лица","Коричневый","https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500"],
-["Увлажняющий крем Interfuse",18,4,"Кремы для лица","Синий","https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500",30],
-["Антибактериальная мицеллярная вода",18,4,"Уход за кожей","Синий","https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=500"],
-["Тональная основа L’Oréal",20,4,"Кремы для лица","Коричневый","https://images.unsplash.com/photo-1631730359585-38a4935cbec4?w=500"],
-["Жидкий хайлайтер L’Oréal",18,3,"Кремы для лица","Розовый","https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=500"],
-["Очищающее масло Mint",42,5,"Уход за кожей","Жёлтый","https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500",50],
-["Матовая помада Miss Rose",11.05,4,"Помады","Розовый","https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500"],
-["Парфюм Mystique",45,4,"Уход за кожей","Коричневый","https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500"],
-["Масло для лица Nykaa",18,5,"Уход за кожей","Розовый","https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=500"],
-["Увлажняющий гель Proteios",18,4,"Уход за кожей","Синий","https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=500",45]
-].map((x,i)=>({id:i,name:x[0],price:x[1],rating:x[2],cat:x[3],color:x[4],img:x[5],old:x[6]||null}));
-let cart=[],favorites=new Set(),category="",favoriteMode=false,cartMode=false;
-const products=document.getElementById("products");
-function render(){
- let list=items.filter(p=>(!category||p.cat===category)&&p.price<=Number(document.getElementById("priceRange").value)&&p.name.toLowerCase().includes(document.getElementById("search").value.toLowerCase()));
- const chosen=[...document.querySelectorAll('#colors input:checked')].map(x=>x.value);
- if(chosen.length)list=list.filter(p=>chosen.includes(p.color));
- const ratings=[...document.querySelectorAll('.side-section:last-child input:checked')].map(x=>+x.value);
- if(ratings.length)list=list.filter(p=>ratings.includes(p.rating));
- if(favoriteMode)list=list.filter(p=>favorites.has(p.id));
- if(cartMode)list=list.filter(p=>cart.includes(p.id));
- const sort=document.getElementById('sort').value;
- if(sort==='low')list.sort((a,b)=>a.price-b.price);if(sort==='high')list.sort((a,b)=>b.price-a.price);if(sort==='name')list.sort((a,b)=>a.name.localeCompare(b.name));
- document.getElementById('resultCount').textContent=Найдено товаров: ${list.length};
- products.innerHTML=list.length?list.map(p=><article class="product"><div class="photo">${p.old&&p.id===0?'<span class="flag sold">НЕТ В НАЛИЧИИ</span>':p.old?'<span class="flag">Скидка!</span>':''}<button class="heart ${favorites.has(p.id)?'liked':''}" onclick="toggleLike(${p.id})">♥️</button><img src="${p.img}" alt="${p.name}" loading="lazy"></div><div class="stars">${'★'.repeat(p.rating)}<span class="off">${'★'.repeat(5-p.rating)}</span></div><div class="name">${p.name}</div><div class="price">${p.old?<span class="old">$${p.old.toFixed(2)}</span>:''}$${p.price.toFixed(2)}</div><button class="add" onclick="addCart(${p.id})">В КОРЗИНУ</button></article>).join(''):'<div class="empty">Товары не найдены.</div>';
- document.getElementById('cartCount').textContent=cart.length;
-}
-function toggleLike(id){favorites.has(id)?favorites.delete(id):favorites.add(id);render()}
-function addCart(id){cart.push(id);render();alert('Товар добавлен в корзину!')}
-function showFavorites(){favoriteMode=!favoriteMode;cartMode=false;render()}
-function showCart(){cartMode=!cartMode;favoriteMode=false;render();if(cartMode)alert(cart.length?В корзине товаров: ${cart.length}.:'Корзина пока пуста.')}
-document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();render()});
-document.getElementById('search').addEventListener('input',render);
-document.getElementById('sort').addEventListener('change',render);
-document.getElementById('priceRange').addEventListener('input',e=>{document.getElementById('priceLabel').textContent=Цена: $10 — $${e.target.value};render()});
-document.querySelectorAll('#colors input,.side-section:last-child input').forEach(x=>x.addEventListener('change',render));
-document.querySelectorAll('.cat').forEach(x=>x.addEventListener('click',()=>{category=category===x.dataset.cat?'':x.dataset.cat;render()}));
-document.querySelectorAll('.tag').forEach(x=>x.addEventListener('click',()=>x.classList.toggle('active')));
 
-// Дополнительные товары: всего 150 позиций в каталоге
-const extraNames = [
-"Увлажняющий крем с розой","Осветляющая сыворотка с витамином C","Матовая жидкая помада","Блеск для губ «Бархат»","Водостойкая тушь для объёма","Мягкое средство для умывания","Успокаивающий гель с алоэ вера","Крем для кожи вокруг глаз с пептидами","Сияющий хайлайтер","Шелковистая база под макияж","Питательное масло для волос","Тоник с розовой водой","Стойкий тональный крем бежевый","Гель для укладки бровей","Персиковые румяна","Кокосовый лосьон для тела","Очищающая маска с углём","Сыворотка с гиалуроновой кислотой","Розовая нюдовая помада","Золотистые тени с блёстками","Увлажняющий крем для чувствительной кожи","Мицеллярная вода","Восстанавливающий крем для рук","Консилер с сатиновым финишем","Чёрная водостойкая подводка","Ежедневный солнцезащитный крем SPF","Мягкая пенка для умывания","Бальзам для губ с вишней","Рассыпчатая пудра с эффектом мягкого фокуса","Тушь для удлинения ресниц","Патчи для глаз с огурцом","Ночной коллагеновый крем","Фиксирующий спрей для макияжа","Спрей для лица с лепестками роз","Крем для тела с маслом ши","Капли для сияния кожи","Профессиональный набор кистей для макияжа","Питательное масло для кутикулы","Кремовые матовые румяна","Увлажняющее масло для губ","Осветляющий скраб для лица","Успокаивающая маска с зелёным чаем","Шелковистый гель для душа","Лёгкий BB-крем","База для сияния кожи","Водостойкий карандаш для бровей","Увеличивающий объём блеск для губ","Шампунь для ежедневного ухода","Маска для волос с кератином","Сыворотка для волос с аргановым маслом","Лавандовый лосьон для тела","Свежий цитрусовый парфюм","Парфюмированный спрей с ароматом розы","Тональный крем с бархатным финишем","Пудра с естественным финишем","Золотистый бронзер","Персиковая палетка теней","Карандаш для smoky eyes","Мягкое средство для снятия макияжа","Ночная маска для губ","Масло для лица с витамином E","Увлажняющий гель на каждый день","Очищающая глиняная маска","Успокаивающий гель после загара","Освежающее средство для умывания с мятой","Осветляющая сыворотка для глаз","Шелковистый лосьон для рук","Питательное масло для тела","Классическая красная помада","Помада нюдового оттенка мокко","Коралловые кремовые румяна","Хайлайтер оттенка шампань","Коричневая тушь для ресниц","Точная жидкая подводка","Прозрачный гель для бровей","Набор спонжей для макияжа","Кисть для растушёвки","Скошенная кисть для бровей","Увлажняющая тканевая маска","Полоски для очищения носа","Солнцезащитный крем для лица SPF","Восстанавливающий защитный бальзам","Увлажняющий крем с церамидами","Сыворотка с ниацинамидом","Ночная сыворотка с ретинолом","Мягкий крем для умывания","Тоник для баланса кожи","Сыворотка для ухода за порами","Шампунь с ароматом розы","Увлажняющий кондиционер","Восстанавливающий уход для волос","Лак для блеска волос","Масло для тела с шелковистым финишем","Спрей для тела с ванилью","Цветочная парфюмерная вода","Бальзам для снятия макияжа","Увлажняющий гель-крем","Консилер для области под глазами","Тональный крем плотного покрытия","Нежно-розовый тинт для губ","Ягодный тинт для губ","Глянцевый лак для ногтей","Укрепитель для ногтей","Крем для ухода за кутикулой","Палетка пастельных теней","Бронзовая палетка с шиммером","Набор натуральных накладных ресниц","Сыворотка для ухода за ресницами","Охлаждающий роллер для лица","Нефритовый массажёр для лица","Силиконовая щётка для очищения","Дорожная косметичка","Компактная пудра бежевого оттенка","Рассыпчатая фиксирующая пудра","Кремовый стик для контуринга","Жидкие розовые румяна","Лосьон для сияния кожи тела","Крем с маслом какао","Антисептический гель с алоэ","Ежедневный крем для ног","Спрей для тела с ароматом свежести","Парфюм «Морской бриз»","Парфюм «Сладкий пион»","Ванильный скраб для губ","Мятный уход для губ","Ночная маска для лица","Увлажняющий крем для шеи","Мягкий отшелушивающий тоник","Шампунь для ежедневного баланса","Разглаживающий кондиционер для волос","Термозащитный спрей для волос","Крем для укладки кудрей","Сыворотка для кожи головы","Питательное масло-баттер для волос"
+<footer>BRIGHLOSS BEAUTY SHOP · Красота в каждой детали</footer>
+<script>
+const productsData = [
+["Увлажняющий крем для лица","Уход за лицом",25,"photo-1608248543803-ba4f8c70ae0b"],
+["Очищающая пенка","Уход за лицом",18,"photo-1556229010-6c3f2c9ca5f8"],
+["Сыворотка с витамином C","Уход за лицом",32,"photo-1611930022073-b7a4ba5fcccd"],
+["Тоник для лица","Уход за лицом",20,"photo-1601049541289-9b1b7bbbfe19"],
+["Маска для лица","Уход за лицом",15,"photo-1596755389378-c31d21fd1273"],
+["Крем для глаз","Уход за лицом",28,"photo-1608248543803-ba4f8c70ae0b"],
+["Мицеллярная вода","Уход за лицом",17,"photo-1556229010-6c3f2c9ca5f8"],
+["Скраб для лица","Уход за лицом",19,"photo-1601049541289-9b1b7bbbfe19"],
+["Гель алоэ вера","Уход за лицом",16,"photo-1611930022073-b7a4ba5fcccd"],
+["Ночная маска","Уход за лицом",24,"photo-1596755389378-c31d21fd1273"],
+["Тональный крем","Макияж",35,"photo-1631730359585-38a4935cbec4"],
+["Пудра компактная","Макияж",22,"photo-1596462502278-27bfdc403348"],
+["Румяна персиковые","Макияж",19,"photo-1611930022073-b7a4ba5fcccd"],
+["Хайлайтер сияющий","Макияж",23,"photo-1611930022073-b7a4ba5fcccd"],
+["Консилер","Макияж",21,"photo-1631730359585-38a4935cbec4"],
+["Бронзер","Макияж",20,"photo-1596462502278-27bfdc403348"],
+["Праймер для макияжа","Макияж",27,"photo-1608248543803-ba4f8c70ae0b"],
+["Спрей фиксатор","Макияж",18,"photo-1601049541289-9b1b7bbbfe19"],
+["Тональный кушон","Макияж",30,"photo-1631730359585-38a4935cbec4"],
+["Палетка для лица","Макияж",38,"photo-1596462502278-27bfdc403348"],
+["Красная помада","Губы",15,"photo-1586495777744-4413f21062fa"],
+["Розовая помада","Губы",14,"photo-1586495777744-4413f21062fa"],
+["Нюдовая помада","Губы",16,"photo-1586495777744-4413f21062fa"],
+["Блеск для губ","Губы",12,"photo-1586495777744-4413f21062fa"],
+["Масло для губ","Губы",13,"photo-1586495777744-4413f21062fa"],
+["Карандаш для губ","Губы",9,"photo-1586495777744-4413f21062fa"],
+["Тинт для губ","Губы",17,"photo-1586495777744-4413f21062fa"],
+["Бальзам для губ","Губы",10,"photo-1586495777744-4413f21062fa"],
+["Матовая помада","Губы",18,"photo-1586495777744-4413f21062fa"],
+["Набор блесков","Губы",29,"photo-1586495777744-4413f21062fa"],
+["Тушь для ресниц","Глаза",19,"photo-1583241800698-e8ab01830a5d"],
+["Подводка для глаз","Глаза",13,"photo-1583241800698-e8ab01830a5d"],
+["Карандаш для глаз","Глаза",11,"photo-1583241800698-e8ab01830a5d"],
+["Палетка теней","Глаза",35,"photo-1596462502278-27bfdc403348"],
+["Гель для бровей","Глаза",14,"photo-1583241800698-e8ab01830a5d"],
+["Карандаш для бровей","Глаза",12,"photo-1583241800698-e8ab01830a5d"],
+["Накладные ресницы","Глаза",16,"photo-1583241800698-e8ab01830a5d"],
+["Щипцы для ресниц","Глаза",15,"photo-1596462502278-27bfdc403348"],
+["Тени золотистые","Глаза",20,"photo-1596462502278-27bfdc403348"],
+["Тени розовые","Глаза",20,"photo-1596462502278-27bfdc403348"],
+["Шампунь для волос","Волосы",18,"photo-1608248543803-ba4f8c70ae0b"],
+["Кондиционер для волос","Волосы",20,"photo-1608248543803-ba4f8c70ae0b"],
+["Маска для волос","Волосы",25,"photo-1608248543803-ba4f8c70ae0b"],
+["Масло арганы","Волосы",22,"photo-1601049541289-9b1b7bbbfe19"],
+["Спрей для волос","Волосы",17,"photo-1608248543803-ba4f8c70ae0b"],
+["Сыворотка для волос","Волосы",28,"photo-1601049541289-9b1b7bbbfe19"],
+["Крем для укладки","Волосы",19,"photo-1608248543803-ba4f8c70ae0b"],
+["Термозащита для волос","Волосы",23,"photo-1601049541289-9b1b7bbbfe19"],
+["Бальзам для волос","Волосы",16,"photo-1608248543803-ba4f8c70ae0b"],
+["Масло для кончиков волос","Волосы",21,"photo-1601049541289-9b1b7bbbfe19"],
+["Женский парфюм","Парфюм",55,"photo-1594035910387-fea47794261f"],
+["Цветочный парфюм","Парфюм",60,"photo-1594035910387-fea47794261f"],
+["Ванильный парфюм","Парфюм",48,"photo-1594035910387-fea47794261f"],
+["Цитрусовый парфюм","Парфюм",45,"photo-1594035910387-fea47794261f"],
+["Мини-парфюм","Парфюм",25,"photo-1594035910387-fea47794261f"],
+["Парфюмированная вода","Парфюм",65,"photo-1594035910387-fea47794261f"],
+["Спрей для тела","Парфюм",22,"photo-1594035910387-fea47794261f"],
+["Парфюм с розой","Парфюм",52,"photo-1594035910387-fea47794261f"],
+["Свежий аромат","Парфюм",49,"photo-1594035910387-fea47794261f"],
+["Набор мини-парфюмов","Парфюм",70,"photo-1594035910387-fea47794261f"],
+["Крем с гиалуроновой кислотой","Уход за лицом",29,"photo-1608248543803-ba4f8c70ae0b"],
+["Сыворотка с ниацинамидом","Уход за лицом",27,"photo-1611930022073-b7a4ba5fcccd"],
+["Очищающая маска с углём","Уход за лицом",18,"photo-1556229010-6c3f2c9ca5f8"],
+["Крем с церамидами","Уход за лицом",31,"photo-1608248543803-ba4f8c70ae0b"],
+["Увлажняющий гель","Уход за лицом",20,"photo-1611930022073-b7a4ba5fcccd"],
+["Тканевая маска","Уход за лицом",8,"photo-1556229010-6c3f2c9ca5f8"],
+["Патчи для глаз","Уход за лицом",14,"photo-1608248543803-ba4f8c70ae0b"],
+["Крем с алоэ","Уход за лицом",17,"photo-1608248543803-ba4f8c70ae0b"],
+["Солнцезащитный крем","Уход за лицом",26,"photo-1608248543803-ba4f8c70ae0b"],
+["Мягкий гель для умывания","Уход за лицом",18,"photo-1556229010-6c3f2c9ca5f8"],
+["Жидкие румяна","Макияж",21,"photo-1611930022073-b7a4ba5fcccd"],
+["Палетка нюдовых теней","Макияж",32,"photo-1596462502278-27bfdc403348"],
+["Пудра рассыпчатая","Макияж",24,"photo-1596462502278-27bfdc403348"],
+["Кремовый хайлайтер","Макияж",22,"photo-1611930022073-b7a4ba5fcccd"],
+["Тональный крем матовый","Макияж",34,"photo-1631730359585-38a4935cbec4"],
+["База для век","Макияж",16,"photo-1596462502278-27bfdc403348"],
+["Палетка бронзовых теней","Макияж",36,"photo-1596462502278-27bfdc403348"],
+["Кисть для тонального крема","Макияж",12,"photo-1596462502278-27bfdc403348"],
+["Набор кистей","Макияж",30,"photo-1596462502278-27bfdc403348"],
+["Спонж для макияжа","Макияж",8,"photo-1596462502278-27bfdc403348"],
+["Блеск с шиммером","Губы",15,"photo-1586495777744-4413f21062fa"],
+["Помада ягодного оттенка","Губы",17,"photo-1586495777744-4413f21062fa"],
+["Помада коралловая","Губы",16,"photo-1586495777744-4413f21062fa"],
+["Карандаш нюдовый","Губы",9,"photo-1586495777744-4413f21062fa"],
+["Бальзам с вишней","Губы",11,"photo-1586495777744-4413f21062fa"],
+["Блеск прозрачный","Губы",12,"photo-1586495777744-4413f21062fa"],
+["Тинт розовый","Губы",15,"photo-1586495777744-4413f21062fa"],
+["Помада бордовая","Губы",18,"photo-1586495777744-4413f21062fa"],
+["Масло для губ с ароматом персика","Губы",14,"photo-1586495777744-4413f21062fa"],
+["Набор карандашей для губ","Губы",22,"photo-1586495777744-4413f21062fa"],
+["Тушь для объёма","Глаза",20,"photo-1583241800698-e8ab01830a5d"],
+["Тушь удлиняющая","Глаза",21,"photo-1583241800698-e8ab01830a5d"],
+["Тушь коричневая","Глаза",19,"photo-1583241800698-e8ab01830a5d"],
+["Подводка чёрная","Глаза",14,"photo-1583241800698-e8ab01830a5d"],
+["Подводка коричневая","Глаза",14,"photo-1583241800698-e8ab01830a5d"],
+["Тени с блёстками","Глаза",18,"photo-1596462502278-27bfdc403348"],
+["Палетка smoky eyes","Глаза",33,"photo-1596462502278-27bfdc403348"],
+["Гель для фиксации бровей","Глаза",15,"photo-1583241800698-e8ab01830a5d"],
+["Набор для бровей","Глаза",24,"photo-1596462502278-27bfdc403348"],
+["Карандаш для бровей коричневый","Глаза",12,"photo-1583241800698-e8ab01830a5d"],
+["Шампунь с кератином","Волосы",22,"photo-1608248543803-ba4f8c70ae0b"],
+["Маска с кокосом","Волосы",24,"photo-1608248543803-ba4f8c70ae0b"],
+["Масло жожоба","Волосы",20,"photo-1601049541289-9b1b7bbbfe19"],
+["Сыворотка с арганой","Волосы",27,"photo-1601049541289-9b1b7bbbfe19"],
+["Кондиционер с кокосом","Волосы",19,"photo-1608248543803-ba4f8c70ae0b"],
+["Спрей для блеска волос","Волосы",18,"photo-1601049541289-9b1b7bbbfe19"],
+["Крем для кудрявых волос","Волосы",21,"photo-1608248543803-ba4f8c70ae0b"],
+["Термозащитный спрей","Волосы",23,"photo-1601049541289-9b1b7bbbfe19"],
+["Питательная маска","Волосы",25,"photo-1608248543803-ba4f8c70ae0b"],
+["Шампунь для блеска","Волосы",20,"photo-1608248543803-ba4f8c70ae0b"],
+["Парфюм с жасмином","Парфюм",58,"photo-1594035910387-fea47794261f"],
+["Парфюм с ванилью","Парфюм",54,"photo-1594035910387-fea47794261f"],
+["Парфюм с мускусом","Парфюм",62,"photo-1594035910387-fea47794261f"],
+["Парфюм с лавандой","Парфюм",49,"photo-1594035910387-fea47794261f"],
+["Парфюм с цитрусом","Парфюм",51,"photo-1594035910387-fea47794261f"],
+["Парфюм с пионом","Парфюм",57,"photo-1594035910387-fea47794261f"],
+["Парфюм с белыми цветами","Парфюм",60,"photo-1594035910387-fea47794261f"],
+["Парфюм с фруктами","Парфюм",53,"photo-1594035910387-fea47794261f"],
+["Парфюм для повседневного использования","Парфюм",45,"photo-1594035910387-fea47794261f"],
+["Парфюмерный подарочный набор","Парфюм",75,"photo-1594035910387-fea47794261f"],
+["Увлажняющий крем с розой","Уход за лицом",23,"photo-1608248543803-ba4f8c70ae0b"],
+["Сыворотка для сияния","Уход за лицом",30,"photo-1611930022073-b7a4ba5fcccd"],
+["Гель для очищения пор","Уход за лицом",19,"photo-1556229010-6c3f2c9ca5f8"],
+["Тоник с зелёным чаем","Уход за лицом",21,"photo-1601049541289-9b1b7bbbfe19"],
+["Крем для чувствительной кожи","Уход за лицом",28,"photo-1608248543803-ba4f8c70ae0b"],
+["Маска с глиной","Уход за лицом",17,"photo-1556229010-6c3f2c9ca5f8"],
+["Пенка с алоэ","Уход за лицом",16,"photo-1556229010-6c3f2c9ca5f8"],
+["Сыворотка для увлажнения","Уход за лицом",29,"photo-1611930022073-b7a4ba5fcccd"],
+["Крем для восстановления кожи","Уход за лицом",32,"photo-1608248543803-ba4f8c70ae0b"],
+["Маска для ночного ухода","Уход за лицом",25,"photo-1596755389378-c31d21fd1273"],
+["Румяна розовые","Макияж",18,"photo-1611930022073-b7a4ba5fcccd"],
+["Пудра с матовым эффектом","Макияж",23,"photo-1596462502278-27bfdc403348"],
+["Консилер светлый","Макияж",20,"photo-1631730359585-38a4935cbec4"],
+["Хайлайтер золотистый","Макияж",24,"photo-1611930022073-b7a4ba5fcccd"],
+["Тональный крем лёгкий","Макияж",31,"photo-1631730359585-38a4935cbec4"],
+["Набор для контуринга","Макияж",35,"photo-1596462502278-27bfdc403348"],
+["База с сиянием","Макияж",26,"photo-1608248543803-ba4f8c70ae0b"],
+["Палетка пастельных теней","Макияж",34,"photo-1596462502278-27bfdc403348"],
+["Стик для лица","Макияж",19,"photo-1596462502278-27bfdc403348"],
+["Набор спонжей","Макияж",17,"photo-1596462502278-27bfdc403348"],
+["Помада оттенка мокко","Губы",16,"photo-1586495777744-4413f21062fa"],
+["Блеск с ароматом ванили","Губы",13,"photo-1586495777744-4413f21062fa"],
+["Красивый ягодный тинт","Губы",15,"photo-1586495777744-4413f21062fa"],
+["Карандаш бордовый","Губы",10,"photo-1586495777744-4413f21062fa"],
+["Помада с сатиновым финишем","Губы",19,"photo-1586495777744-4413f21062fa"],
+["Бальзам с маслом ши","Губы",12,"photo-1586495777744-4413f21062fa"],
+["Блеск персиковый","Губы",14,"photo-1586495777744-4413f21062fa"],
+["Помада нежно-розовая","Губы",17,"photo-1586495777744-4413f21062fa"],
+["Набор для губ","Губы",28,"photo-1586495777744-4413f21062fa"],
+["Масло для губ с витамином E","Губы",16,"photo-1586495777744-4413f21062fa"]
 ];
-const extraImages = [
-"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500",
-"https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=500",
-"https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500",
-"https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500",
-"https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500",
-"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=500",
-"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500",
-"https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=500",
-"https://images.unsplash.com/photo-1631730359585-38a4935cbec4?w=500",
-"https://images.unsplash.com/photo-1583241800698-e8ab01830a5d?w=500"
-];
-const extraCats = ["Кремы для лица","Тени для век","Кисти для макияжа","Помады","Уход за кожей"];
-const extraColors = ["Синий","Серый","Зелёный","Красный","Жёлтый","Чёрный","Коричневый","Розовый"];
-extraNames.forEach((name, i) => {
-  items.push({
-    id: items.length,
-    name,
-    price: Number((10 + ((i * 7) % 81) + (i % 4) * 0.25).toFixed(2)),
-    rating: 3 + (i % 3),
-    cat: extraCats[i % extraCats.length],
-    color: extraColors[i % extraColors.length],
-    img: extraImages[i % extraImages.length],
-    old: i % 5 === 0 ? Number((18 + ((i * 5) % 7
+
+let cart=[];
+let favorites=[];
+let currentCategory="Все";
+let mode="all";
+
+const list=document.getElementById("products");
+
+function imageURL(photo){
+ return "https://images.unsplash.com/"+photo+"?auto=format&fit=crop&w=500&q=80";
+}
+
+function draw(){
+ let data=productsData.map((p,i)=>({...p,id:i}));
+ if(currentCategory!=="Все")data=data.filter(p=>p[1]===currentCategory);
+ if(mode==="favorites")data=data.filter(p=>favorites.includes(p.id));
+ if(mode==="cart")data=data.filter(p=>cart.includes(p.id));
+
+ const query=document.getElementById("search").value.toLowerCase();
+ data=data.filter(p=>p[0].toLowerCase().includes(query));
+
+ const sort=document.getElementById("sort").value;
+ if(sort==="low")data.sort((a,b)=>a[2]-b[2]);
+ if(sort==="high")data.sort((a,b)=>b[2]-a[2]);
+
+ document.getElementById("count").textContent="Найдено товаров: "+data.length;
+
+ list.innerHTML=data.map(p=>`
+ <article class="product">
+ <span class="label">${p[1]}</span>
+ <button class="like ${favorites.includes(p.id)?"active":""}" onclick="toggleLike(${p.id})">♥</button>
+ <img src="${imageURL(p[3])}" alt="${p[0]}" loading="lazy">
+ <h4>${p[0]}</h4>
+ <div class="price">${p[2]} $</div>
+ <button class="add" onclick="addCart(${p.id})">В КОРЗИНУ</button>
+ </article>
+ `).join("");
+ document.getElementById("cartCount").textContent=cart.length;
+}
+
+function filterCategory(category){
+ currentCategory=category;
+ mode="all";
+ draw();
+}
+
+function toggleLike(id){
+ if(favorites.includes(id)){
+  favorites=favorites.filter(x=>x!==id);
+ }else{
+  favorites.push(id);
+ }
+ draw();
+}
+
+function addCart(id){
+ cart.push(id);
+ draw();
+ alert("Товар добавлен в корзину!");
+}
+
+function showFavorites(){
+ mode=mode==="favorites"?"all":"favorites";
+ draw();
+}
+
+function showCart(){
+ mode=mode==="cart"?"all":"cart";
+ draw();
+}
+
+document.getElementById("search").addEventListener("input",draw);
+document.getElementById("sort").addEventListener("change",draw);
+
+draw();
+</script>
+
+</body>
+</html>
