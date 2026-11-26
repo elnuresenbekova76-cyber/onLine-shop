@@ -5,176 +5,417 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ELNURA SHOWROOM</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#faf8f4;color:#39352f}
-header{background:#fff;padding:25px 15px;text-align:center}
-.logo{font-size:30px;letter-spacing:7px;font-weight:bold}
-.sublogo{font-size:11px;letter-spacing:4px;color:#a18c76;margin-top:10px}
-nav{display:flex;justify-content:center;gap:25px;flex-wrap:wrap;padding:17px;background:#eee8df}
-nav a{text-decoration:none;color:#4c443a;font-size:13px}
-.hero{background:linear-gradient(120deg,#e8dfd2,#f8f5ef);text-align:center;padding:85px 15px}
-.hero h1{font-size:35px;letter-spacing:4px}
-.hero p{margin:20px 0;color:#75695d}
-button{cursor:pointer;border:none;background:#74624e;color:white;padding:13px 23px}
-button:hover{background:#44392e}
-.container{max-width:1250px;margin:auto;padding:25px 18px}
-.title{text-align:center;margin:40px 0 25px;letter-spacing:4px;font-size:24px}
-.categories{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:25px}
-.categories button{background:#e9e1d6;color:#50463a}
-.categories button.active{background:#75634f;color:white}
-.search{display:block;margin:20px auto;padding:13px;width:90%;max-width:400px;border:1px solid #d6cbbd;background:white}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px}
-.card{background:white;text-align:center;padding-bottom:20px;transition:.3s}
-.card:hover{transform:translateY(-5px)}
-.card img{width:100%;height:240px;object-fit:cover;background:#eee}
-.card h3{font-size:15px;margin:14px 5px 8px}
-.price{color:#91795e;font-weight:bold;margin:10px}
-.card button{padding:10px 20px}
-.about{text-align:center;background:#eee8df;padding:55px 20px;line-height:2}
-footer{text-align:center;background:#453b31;color:white;padding:35px;line-height:2}
-#count{margin:15px;text-align:center;color:#89745d}
-@media(max-width:500px){.logo{font-size:23px;letter-spacing:4px}.hero h1{font-size:26px}.products{grid-template-columns:repeat(2,1fr);gap:10px}.card img{height:180px}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#faf8f4;color:#40392f}
+header{text-align:center;background:#fff;padding:28px 12px}
+.logo{font-size:30px;letter-spacing:6px;font-weight:bold}
+.tag{font-size:11px;letter-spacing:4px;color:#a38d73;margin-top:9px}
+nav{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;background:#eee7dc;padding:17px}
+nav a{color:#514638;text-decoration:none;font-size:13px}
+.hero{text-align:center;padding:75px 15px;background:linear-gradient(120deg,#e8dfd2,#f8f5ef)}
+.hero h1{font-size:34px;letter-spacing:3px}
+.hero p{margin:17px;color:#776957}
+button{border:0;cursor:pointer;padding:12px 20px;background:#75634e;color:white}
+button:hover{background:#493d30}
+.container{max-width:1300px;margin:auto;padding:25px 16px}
+.title{text-align:center;font-size:25px;letter-spacing:3px;margin:40px 0 25px}
+.search{display:block;width:90%;max-width:430px;padding:14px;margin:20px auto;border:1px solid #d9cbbb;background:white}
+.categories{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:25px 0}
+.categories button{background:#eae2d7;color:#514638;border:1px solid #ded2c3}
+.categories button.active{background:#75634e;color:white}
+.info{text-align:center;color:#927d65;margin:18px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
+.card{background:white;text-align:center;padding-bottom:18px;border:1px solid #eee8df;overflow:hidden}
+.card img{width:100%;height:245px;object-fit:cover;background:#eee7dc}
+.card h3{font-size:14px;margin:13px 5px}
+.card .category{font-size:11px;color:#a18c75}
+.price{font-weight:bold;color:#8c7253;margin:10px}
+.card .actions{display:flex;justify-content:center;gap:7px;flex-wrap:wrap}
+.card button{font-size:11px;padding:10px 12px}
+.add{background:#e9e1d6;color:#504536}
+.about{text-align:center;padding:55px 20px;background:#eee7dc;line-height:2}
+footer{text-align:center;padding:35px;background:#453b31;color:white;line-height:2}
+#cartCount{font-weight:bold;color:#8b6e4d}
+.modal{display:none;position:fixed;inset:0;background:#0009;z-index:10;overflow:auto;padding:20px}
+.modal.show{display:flex;align-items:center;justify-content:center}
+.panel{background:#fffaf4;padding:25px;width:100%;max-width:450px;max-height:90vh;overflow:auto;position:relative}
+.panel h2{text-align:center;margin-bottom:20px}
+.panel input,.panel textarea{width:100%;padding:13px;margin:7px 0;border:1px solid #d8cbbb;font:14px Arial}
+.panel textarea{height:75px;resize:vertical}
+.panel button{margin-top:10px;width:100%}
+.close{position:absolute;right:15px;top:10px;background:transparent;color:#333;font-size:23px;width:auto!important}
+.orderitem{padding:12px 0;border-bottom:1px solid #ddd}
+.success{text-align:center;padding:20px;line-height:2}
+.hidden{display:none}
+@media(max-width:500px){
+.logo{font-size:22px;letter-spacing:3px}
+.hero h1{font-size:25px}
+.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.card img{height:175px}
+.card h3{font-size:12px}
+.card button{padding:9px 7px;font-size:10px}
+}
 </style>
 </head>
 <body>
 
 <header>
 <div class="logo">ELNURA SHOWROOM</div>
-<div class="sublogo">ELEGANCE • BEAUTY • STYLE</div>
+<div class="tag">ELEGANCE • BEAUTY • STYLE</div>
 </header>
 
 <nav>
-<a href="#home">ГЛАВНАЯ</a>
-<a href="#shop">КАТАЛОГ</a>
-<a href="#about">О НАС</a>
-<a href="#contact">КОНТАКТЫ</a>
+<a href="#home">Главная</a>
+<a href="#shop">Каталог</a>
+<a href="#about">О нас</a>
+<a href="#contact">Контакты</a>
+<a href="#" onclick="openCart();return false">Корзина (<span id="cartCount">0</span>)</a>
 </nav>
 
 <section class="hero" id="home">
 <h1>YOUR STYLE, YOUR BEAUTY</h1>
-<p>Открой для себя мир элегантности</p>
+<p>Стиль начинается с тебя</p>
 <button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">СМОТРЕТЬ КОЛЛЕКЦИЮ</button>
 </section>
 
-<div class="container" id="shop">
+<main class="container" id="shop">
 <h2 class="title">НАША КОЛЛЕКЦИЯ</h2>
 <input class="search" id="search" placeholder="Поиск товаров..." oninput="render()">
 <div class="categories" id="categories"></div>
-<div id="count"></div>
+<div class="info" id="info"></div>
 <div class="products" id="products"></div>
-</div>
+</main>
 
 <section class="about" id="about">
 <h2>О ELNURA SHOWROOM</h2>
-<p>Добро пожаловать в ELNURA SHOWROOM!</p>
-<p>Здесь ты найдёшь стильную одежду и аксессуары.</p>
-<p>Красота в простоте, элегантность в деталях.</p>
+<p>Добро пожаловать в наш магазин!</p>
+<p>Стильная одежда, красивые образы и аксессуары.</p>
+<p>Красота в простоте. Элегантность в деталях.</p>
 </section>
 
 <footer id="contact">
 <h2>ELNURA SHOWROOM</h2>
 <p>ELEGANCE • BEAUTY • STYLE</p>
-<p>Instagram: @elnura_showroom</p>
-<p>© 2026 Все права защищены</p>
+<p>Спасибо, что выбираете нас!</p>
+<p>© 2026 ELNURA SHOWROOM</p>
 </footer>
 
-<script>
-const categories=["Все товары","Платья","Костюмы","Блузки","Футболки","Брюки","Юбки","Джинсы","Верхняя одежда","Сумки","Обувь","Аксессуары"];
+<!-- ORDER WINDOW -->
+<div class="modal" id="orderModal">
+<div class="panel">
+<button class="close" onclick="closeModal('orderModal')">×</button>
+<h2>ОФОРМЛЕНИЕ ЗАКАЗА</h2>
+<div id="orderDetails"></div>
+<form id="orderForm">
+<input id="customerName" placeholder="Ваше имя" required>
+<input id="customerPhone" type="tel" placeholder="Номер телефона" required>
+<textarea id="customerAddress" placeholder="Адрес доставки" required></textarea>
+<button type="submit">ПОДТВЕРДИТЬ ЗАКАЗ</button>
+</form>
+<div class="success hidden" id="success">
+<h2>✓</h2>
+<h3>Ваш заказ успешно оформлен!</h3>
+<p>Спасибо за покупку в ELNURA SHOWROOM 🤍</p>
+<button onclick="closeModal('orderModal')">ЗАКРЫТЬ</button>
+</div>
+</div>
+</div>
 
-const items=[
-["Элегантное платье","Платья",2500,"photo-1539109136881-3be0616acf4b"],
-["Бежевое платье","Платья",2800,"photo-1595777457583-95e059d581b8"],
-["Вечернее платье","Платья",3500,"photo-1566174053879-31528523f8ae"],
-["Летнее платье","Платья",1900,"photo-1515372039744-b8f02a3ae446"],
-["Классическое платье","Платья",2900,"photo-1566174053879-31528523f8ae"],
-["Платье миди","Платья",2600,"photo-1595777457583-95e059d581b8"],
-["Белое платье","Платья",2700,"photo-1539008835657-9e8e9680c956"],
-["Повседневное платье","Платья",2100,"photo-1515372039744-b8f02a3ae446"],
-["Классический костюм","Костюмы",4200,"photo-1591047139829-d91aecb6caea"],
-["Бежевый костюм","Костюмы",4500,"photo-1598554747436-c9293d6a588f"],
-["Женский костюм","Костюмы",3900,"photo-1591369822096-ffd140ec948f"],
-["Деловой костюм","Костюмы",4800,"photo-1591047139829-d91aecb6caea"],
-["Костюм двойка","Костюмы",4300,"photo-1598554747436-c9293d6a588f"],
-["Стильный жакет","Костюмы",3200,"photo-1591369822096-ffd140ec948f"],
-["Белая блузка","Блузки",1500,"photo-1551163943-3f6a855d1153"],
-["Бежевая блузка","Блузки",1700,"photo-1564257577-1b6c5f6c7e6d"],
-["Шёлковая блузка","Блузки",2200,"photo-1598554747436-c9293d6a588f"],
-["Классическая блузка","Блузки",1800,"photo-1551163943-3f6a855d1153"],
-["Белая футболка","Футболки",900,"photo-1521572163474-6864f9cf17ab"],
-["Базовая футболка","Футболки",850,"photo-1503341504253-dff4815485f1"],
-["Футболка oversize","Футболки",1200,"photo-1529139574466-a303027c1d8b"],
-["Бежевая футболка","Футболки",950,"photo-1521572163474-6864f9cf17ab"],
-["Классические брюки","Брюки",1900,"photo-1506629905607-d9c297d5b7c3"],
-["Широкие брюки","Брюки",2100,"photo-1594633312681-425c7b97ccd1"],
-["Бежевые брюки","Брюки",2000,"photo-1506629905607-d9c297d5b7c3"],
-["Брюки палаццо","Брюки",2300,"photo-1594633312681-425c7b97ccd1"],
-["Длинная юбка","Юбки",1800,"photo-1583496661160-fb5886a0aaaa"],
-["Юбка миди","Юбки",1600,"photo-1583496661160-fb5886a0aaaa"],
-["Классическая юбка","Юбки",1900,"photo-1582142306909-195724d33ffc"],
-["Джинсовая юбка","Юбки",1700,"photo-1582142306909-195724d33ffc"],
-["Голубые джинсы","Джинсы",2200,"photo-1541099649105-f69ad21f3246"],
-["Классические джинсы","Джинсы",2400,"photo-1542272604-787c3835535d"],
-["Широкие джинсы","Джинсы",2500,"photo-1541099649105-f69ad21f3246"],
-["Синие джинсы","Джинсы",2100,"photo-1542272604-787c3835535d"],
-["Бежевый тренч","Верхняя одежда",4500,"photo-1548126032-079a0fb0099d"],
-["Классическое пальто","Верхняя одежда",5500,"photo-1539533018447-63fcce2678e3"],
-["Женская куртка","Верхняя одежда",3900,"photo-1548624149-f5f6c4c1b0e5"],
-["Тёплый кардиган","Верхняя одежда",2800,"photo-1576566588028-4147f3842f27"],
-["Модная сумка","Сумки",2500,"photo-1584917865442-de89df76afd3"],
-["Бежевая сумка","Сумки",2800,"photo-1590874103328-eac38a683ce7"],
-["Классическая сумка","Сумки",3200,"photo-1548036328-c9fa89d128fa"],
-["Мини-сумка","Сумки",1900,"photo-1584917865442-de89df76afd3"],
-["Повседневная сумка","Сумки",2300,"photo-1590874103328-eac38a683ce7"],
-["Белые кроссовки","Обувь",3200,"photo-1542291026-7eec264c27ff"],
-["Классические туфли","Обувь",3500,"photo-1543163521-1bf539c55dd2"],
-["Женские босоножки","Обувь",2800,"photo-1515347619252-60a4bf4fff4f"],
-["Бежевые туфли","Обувь",3300,"photo-1543163521-1bf539c55dd2"],
-["Модные ботинки","Обувь",3900,"photo-1542291026-7eec264c27ff"],
-["Золотые серьги","Аксессуары",800,"photo-1535632066927-ab7c9ab60908"],
-["Жемчужное колье","Аксессуары",1200,"photo-1611652022419-a9419f74343d"],
-["Стильные очки","Аксессуары",900,"photo-1511499767150-a48a237f0083"],
-["Женский ремень","Аксессуары",700,"photo-1624222247344-550fb8f4a7d2"],
-["Наручные часы","Аксессуары",1800,"photo-1524592094714-0f0654e20314"],
-["Шёлковый платок","Аксессуары",1000,"photo-1601924994987-69e26d50dc26"],
-["Золотой браслет","Аксессуары",950,"photo-1611591437281-460bfbe1220a"],
-["Кошелёк","Аксессуары",1100,"photo-1627123424574-724758594e93"],
-["Минималистичное кольцо","Аксессуары",650,"photo-1605100804763-247f67b3557e"],
-["Модная заколка","Аксессуары",350,"photo-1635767798638-3665a1c3fba3"],
-["Элегантный шарф","Аксессуары",1300,"photo-1601924994987-69e26d50dc26"]
+<!-- CART WINDOW -->
+<div class="modal" id="cartModal">
+<div class="panel">
+<button class="close" onclick="closeModal('cartModal')">×</button>
+<h2>МОЯ КОРЗИНА</h2>
+<div id="cartItems"></div>
+<p id="cartTotal" style="text-align:center;margin:20px"></p>
+<button onclick="checkoutCart()">ОФОРМИТЬ ЗАКАЗ</button>
+</div>
+</div>
+
+<script>
+// КОЛЛЕКЦИИ: В КАЖДОЙ ПО 50 ТОВАРОВ
+const collections=[
+{
+name:"Платья",
+price:2500,
+names:["Элегантное платье","Бежевое платье","Белое платье","Вечернее платье","Летнее платье","Классическое платье","Платье миди","Платье макси","Повседневное платье","Платье с поясом"],
+images:[
+"https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=500",
+"https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500",
+"https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500"
+]
+},
+{
+name:"Костюмы",
+price:4200,
+names:["Классический костюм","Бежевый костюм","Женский костюм","Деловой костюм","Костюм двойка","Костюм с жакетом","Летний костюм","Костюм oversize","Элегантный костюм","Брючный костюм"],
+images:[
+"https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=500",
+"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500",
+"https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=500"
+]
+},
+{
+name:"Блузки",
+price:1600,
+names:["Белая блузка","Бежевая блузка","Шёлковая блузка","Классическая блузка","Блузка с воротником","Блузка oversize","Лёгкая блузка","Романтичная блузка","Блузка с рукавами","Нарядная блузка"],
+images:[
+"https://images.unsplash.com/photo-1551163943-3f6a855d1153?w=500",
+"https://images.unsplash.com/photo-1564257577-1b6c5f6c7e6d?w=500",
+"https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=500"
+]
+},
+{
+name:"Футболки",
+price:950,
+names:["Белая футболка","Базовая футболка","Футболка oversize","Бежевая футболка","Чёрная футболка","Футболка с принтом","Хлопковая футболка","Свободная футболка","Классическая футболка","Укороченная футболка"],
+images:[
+"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
+"https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=500",
+"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500"
+]
+},
+{
+name:"Брюки",
+price:2000,
+names:["Классические брюки","Широкие брюки","Бежевые брюки","Брюки палаццо","Чёрные брюки","Брюки прямого кроя","Брюки с поясом","Летние брюки","Брюки с высокой талией","Свободные брюки"],
+images:[
+"https://images.unsplash.com/photo-1506629905607-d9c297d5b7c3?w=500",
+"https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500",
+"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500"
+]
+},
+{
+name:"Юбки",
+price:1800,
+names:["Длинная юбка","Юбка миди","Классическая юбка","Джинсовая юбка","Бежевая юбка","Чёрная юбка","Юбка плиссе","Юбка макси","Юбка с поясом","Юбка прямого кроя"],
+images:[
+"https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=500",
+"https://images.unsplash.com/photo-1582142306909-195724d33ffc?w=500",
+"https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500"
+]
+},
+{
+name:"Джинсы",
+price:2300,
+names:["Голубые джинсы","Классические джинсы","Широкие джинсы","Синие джинсы","Чёрные джинсы","Джинсы прямого кроя","Джинсы mom fit","Джинсы wide leg","Джинсы с высокой талией","Повседневные джинсы"],
+images:[
+"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500",
+"https://images.unsplash.com/photo-1542272604-787c3835535d?w=500",
+"https://images.unsplash.com/photo-1582418702059-97ebafb35d09?w=500"
+]
+},
+{
+name:"Верхняя одежда",
+price:4500,
+names:["Бежевый тренч","Классическое пальто","Женская куртка","Тёплый кардиган","Длинное пальто","Демисезонная куртка","Стильный жакет","Пальто oversize","Лёгкий плащ","Короткая куртка"],
+images:[
+"https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=500",
+"https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=500",
+"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500"
+]
+},
+{
+name:"Сумки",
+price:2500,
+names:["Женская сумка","Бежевая сумка","Классическая сумка","Мини-сумка","Повседневная сумка","Сумка через плечо","Кожаная сумка","Элегантная сумка","Маленькая сумка","Сумка шоппер"],
+images:[
+"https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500",
+"https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500",
+"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500"
+]
+},
+{
+name:"Обувь",
+price:3200,
+names:["Белые кроссовки","Классические туфли","Женские босоножки","Бежевые туфли","Модные ботинки","Кеды","Балетки","Летние сандалии","Классические сапоги","Повседневная обувь"],
+images:[
+"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500",
+"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
+"https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=500"
+]
+},
+{
+name:"Аксессуары",
+price:900,
+names:["Золотые серьги","Жемчужное колье","Стильные очки","Женский ремень","Наручные часы","Шёлковый платок","Золотой браслет","Кошелёк","Минималистичное кольцо","Модная заколка"],
+images:[
+"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500",
+"https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=500",
+"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500"
+]
+}
 ];
 
-let selected="Все товары";
+// 50 ТОВАРОВ В КАЖДОЙ КОЛЛЕКЦИИ
+let products=[];
+collections.forEach((c,ci)=>{
+for(let i=0;i<50;i++){
+products.push({
+id:ci*50+i+1,
+name:c.names[i%10]+" №"+String(i+1).padStart(2,"0"),
+category:c.name,
+price:c.price+(i%5)*100,
+image:c.images[i%c.images.length]
+});
+}
+});
 
-const catBox=document.getElementById("categories");
-categories.forEach(c=>{
+let selected="Все товары";
+let cart=[];
+let currentOrder=[];
+
+const categoryBox=document.getElementById("categories");
+["Все товары",...collections.map(c=>c.name)].forEach(cat=>{
 let b=document.createElement("button");
-b.textContent=c;
-if(c===selected)b.classList.add("active");
+b.textContent=cat;
+if(cat===selected)b.classList.add("active");
 b.onclick=()=>{
-selected=c;
+selected=cat;
 document.querySelectorAll(".categories button").forEach(x=>x.classList.remove("active"));
 b.classList.add("active");
 render();
 };
-catBox.appendChild(b);
+categoryBox.appendChild(b);
 });
 
 function render(){
-let search=document.getElementById("search").value.toLowerCase();
-let filtered=items.filter(x=>
-(selected==="Все товары"||x[1]===selected)&&
-x[0].toLowerCase().includes(search)
+let query=document.getElementById("search").value.toLowerCase();
+let filtered=products.filter(p=>
+(selected==="Все товары"||p.category===selected)&&
+(p.name.toLowerCase().includes(query)||p.category.toLowerCase().includes(query))
 );
-document.getElementById("count").textContent="Найдено товаров: "+filtered.length;
-document.getElementById("products").innerHTML=filtered.map(x=>`
+
+document.getElementById("info").textContent=
+"Найдено товаров: "+filtered.length+" | Всего в магазине: "+products.length;
+
+document.getElementById("products").innerHTML=filtered.map(p=>`
 <div class="card">
-<img loading="lazy" src="https://images.unsplash.com/${x[3]}?w=500&auto=format&fit=crop" alt="${x[0]}" onerror="this.src='https://placehold.co/400x500/e9e1d6/74624e?text=ELNURA+SHOWROOM'">
-<h3>${x[0]}</h3>
-<div class="price">${x[2].toLocaleString("ru-RU")} сом</div>
-<button onclick="alert('Спасибо за интерес к ELNURA SHOWROOM! Для заказа свяжитесь с нами в Instagram.')">ЗАКАЗАТЬ</button>
+<img src="${p.image}" alt="${p.category}: ${p.name}" loading="lazy"
+onerror="this.src='https://placehold.co/400x500/e9e1d6/74624e?text=${encodeURIComponent(p.category)}'">
+<div class="category">${p.category}</div>
+<h3>${p.name}</h3>
+<div class="price">${p.price.toLocaleString("ru-RU")} сом</div>
+<div class="actions">
+<button onclick="buyNow(${p.id})">ЗАКАЗАТЬ</button>
+<button class="add" onclick="addCart(${p.id})">В КОРЗИНУ</button>
+</div>
 </div>
 `).join("");
 }
+
+function updateCount(){
+document.getElementById("cartCount").textContent=
+cart.reduce((s,p)=>s+p.qty,0);
+}
+
+function addCart(id){
+let found=cart.find(p=>p.id===id);
+if(found)found.qty++;
+else cart.push({...products.find(p=>p.id===id),qty:1});
+updateCount();
+alert("Товар добавлен в корзину!");
+}
+
+function buyNow(id){
+currentOrder=[{...products.find(p=>p.id===id),qty:1}];
+showOrder();
+}
+
+function openCart(){
+renderCart();
+document.getElementById("cartModal").classList.add("show");
+}
+
+function renderCart(){
+let box=document.getElementById("cartItems");
+if(cart.length===0){
+box.innerHTML="<p style='text-align:center;padding:25px'>Ваша корзина пока пуста.</p>";
+document.getElementById("cartTotal").textContent="";
+return;
+}
+box.innerHTML=cart.map(p=>`
+<div class="orderitem">
+<b>${p.name}</b><br>
+${p.price.toLocaleString("ru-RU")} сом × ${p.qty}
+<button onclick="removeCart(${p.id})" style="float:right;padding:5px">УДАЛИТЬ</button>
+</div>`).join("");
+document.getElementById("cartTotal").textContent=
+"Итого: "+cart.reduce((s,p)=>s+p.price*p.qty,0).toLocaleString("ru-RU")+" сом";
+}
+
+function removeCart(id){
+cart=cart.filter(p=>p.id!==id);
+updateCount();
+renderCart();
+}
+
+function checkoutCart(){
+if(cart.length===0){
+alert("Корзина пуста!");
+return;
+}
+currentOrder=cart.map(p=>({...p}));
+closeModal("cartModal");
+showOrder();
+}
+
+function showOrder(){
+document.getElementById("orderForm").classList.remove("hidden");
+document.getElementById("success").classList.add("hidden");
+document.getElementById("orderDetails").innerHTML=
+currentOrder.map(p=>`
+<div class="orderitem">${p.name} × ${p.qty} — ${p.price*p.qty} сом</div>
+`).join("")+
+"<p style='text-align:center;margin:15px'>Итого: "+
+currentOrder.reduce((s,p)=>s+p.price*p.qty,0).toLocaleString("ru-RU")+" сом</p>";
+document.getElementById("orderModal").classList.add("show");
+}
+
+document.getElementById("orderForm").addEventListener("submit",function(e){
+e.preventDefault();
+let name=document.getElementById("customerName").value.trim();
+let phone=document.getElementById("customerPhone").value.trim();
+let address=document.getElementById("customerAddress").value.trim();
+
+if(!name||!phone||!address)return;
+
+let orderNumber="ELN-"+Date.now().toString().slice(-7);
+
+let order={
+number:orderNumber,
+name:name,
+phone:phone,
+address:address,
+items:currentOrder,
+total:currentOrder.reduce((s,p)=>s+p.price*p.qty,0),
+date:new Date().toLocaleString("ru-RU")
+};
+
+// Сохранение заказа в браузере
+let saved=JSON.parse(localStorage.getItem("elnura_orders")||"[]");
+saved.push(order);
+localStorage.setItem("elnura_orders",JSON.stringify(saved));
+
+document.getElementById("orderDetails").innerHTML="";
+document.getElementById("orderForm").classList.add("hidden");
+document.getElementById("success").classList.remove("hidden");
+document.getElementById("success").innerHTML=`
+<h2>✓</h2>
+<h3>Ваш заказ успешно оформлен!</h3>
+<p>Номер заказа: ${orderNumber}</p>
+<p>Спасибо за покупку, ${name}!</p>
+<p>ELNURA SHOWROOM 🤍</p>
+<button onclick="closeModal('orderModal')">ЗАКРЫТЬ</button>
+`;
+cart=[];
+updateCount();
+});
+
+function closeModal(id){
+document.getElementById(id).classList.remove("show");
+}
+
 render();
 </script>
 </body>
