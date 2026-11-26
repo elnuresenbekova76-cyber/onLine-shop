@@ -1,169 +1,146 @@
-
 <!DOCTYPE html>
-<html lang="ky">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ELNURA SHOWROOM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brighloss — Магазин косметики</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#090909;color:white;font-family:Arial}
-header{padding:18px 5%;background:#111;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #c6a34d;position:sticky;top:0;z-index:5}
-.logo{font-size:22px;font-weight:bold;color:#d5b15c;letter-spacing:2px}
-button{cursor:pointer}
-header button,.gold{background:#c6a34d;color:#111;border:0;padding:11px 16px;border-radius:4px;font-weight:bold}
-.hero{text-align:center;padding:75px 15px;background:radial-gradient(#493719,#090909 70%)}
-.hero h1{font-size:clamp(30px,6vw,55px);color:#e1c477;letter-spacing:4px}
-.hero p{color:#ddd;margin:15px}
-h2{text-align:center;color:#d5b15c;padding:30px 10px}
-.controls{display:flex;gap:10px;padding:15px 5%;flex-wrap:wrap}
-input,select{padding:13px;background:#181818;color:white;border:1px solid #8c7139;border-radius:4px;flex:1;min-width:140px}
-.categories{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:15px}
-.categories button{padding:10px 15px;background:#171717;border:1px solid #9b7a3b;color:#d5b15c;border-radius:25px}
-.categories button.active{background:#c6a34d;color:#111}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:15px 5% 50px}
-.card{background:#171717;border:1px solid #333;border-radius:6px;overflow:hidden}
-.card img{width:100%;height:260px;object-fit:cover;display:block;background:#252525}
-.info{padding:13px}
-.info small{color:#d5b15c}
-.info h3{font-size:15px;margin:8px 0}
-.price{color:#e1c477;font-weight:bold}
-.actions{display:flex;gap:6px;margin-top:12px}
-.actions button{flex:1;padding:10px;background:#c6a34d;border:0;border-radius:4px}
-.actions .heart{background:#292929;color:white}
-.overlay{display:none;position:fixed;inset:0;background:#000c;z-index:10;align-items:center;justify-content:center;padding:15px}
-.panel{background:#171717;border:1px solid #c6a34d;border-radius:8px;padding:22px;width:100%;max-width:480px;max-height:85vh;overflow:auto}
-.panel h2{padding:10px}
-.line{padding:12px 0;border-bottom:1px solid #444;display:flex;justify-content:space-between;gap:8px}
-.line button{padding:5px}
-footer{text-align:center;padding:30px;border-top:1px solid #9b7a3b;color:#aaa}
-@media(max-width:850px){.grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr);gap:9px;padding:10px}.card img{height:190px}.logo{font-size:16px}.controls{padding:10px}}
+:root{--pink:#a95b87;--light:#f5eaf1;--pale:#fbf6f9;--ink:#29232a;--muted:#88818a}
+*{box-sizing:border-box}body{margin:0;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background:#fff}
+button,input,select{font:inherit}.topline{height:30px;background:#f2e8ef;color:#514750;font:11px Arial,sans-serif;display:flex;align-items:center;justify-content:space-between;padding:0 max(calc((100% - 1120px)/2),22px)}
+.topline a{color:inherit;text-decoration:none;margin-left:24px}.head{max-width:1120px;margin:auto;height:76px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;padding:0 22px}
+.search{display:flex;max-width:245px;background:#f6f5f6;height:38px}.search input{border:0;background:transparent;padding:0 12px;min-width:0;width:100%;outline:none;font:12px Arial}.search button{border:0;background:transparent;padding:0 12px;cursor:pointer}
+.logo{text-align:center;font-size:31px;color:#171318;white-space:nowrap}.logo b{font-weight:400}.logo-mark{color:var(--pink);font-size:35px;vertical-align:middle}
+.actions{display:flex;justify-content:flex-end;gap:18px;font:24px Arial}.action{position:relative;cursor:pointer;border:0;background:none;color:#252027}.count{position:absolute;top:-5px;right:-8px;background:var(--pink);color:white;border-radius:50%;font:10px Arial;min-width:16px;height:16px;display:grid;place-items:center}
+nav{background:var(--pink);color:white;min-height:34px;display:flex;justify-content:center;align-items:center;gap:0;font:12px Arial}
+nav a{color:white;text-decoration:none;padding:11px 22px;border-right:1px solid #ffffff35}nav a:hover{background:#91466f}
+.banner{background:#f3e8ef;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 max(calc((100% - 1120px)/2),22px)}
+.banner h1{font-size:25px;font-weight:normal;margin:0}.crumb{font:11px Arial;color:#777}
+main{max-width:1120px;margin:52px auto 70px;padding:0 22px;display:grid;grid-template-columns:190px 1fr;gap:28px}
+.sidebar h3{font-size:15px;margin:0 0 14px}.side-section{padding:0 0 18px;margin-bottom:18px;border-bottom:1px solid #eee}
+.cat{display:flex;justify-content:space-between;align-items:center;font:12px Arial;color:#6d6670;padding:5px 0;cursor:pointer}.cat:hover{color:var(--pink)}
+.range{width:100%;accent-color:var(--pink)}.filter-btn{background:var(--pink);color:white;border:0;padding:8px 18px;font:11px Arial;cursor:pointer;margin-top:8px}
+.small-note{font:11px Arial;color:#777;margin-top:8px}.checks label{display:flex;align-items:center;gap:6px;font:12px Arial;color:#777;padding:4px 0;cursor:pointer}.checks input{accent-color:var(--pink);margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px}.tag{border:1px solid #eee;padding:6px 8px;font:11px Arial;color:#777;cursor:pointer;background:#fff}.tag.active,.tag:hover{background:var(--pink);color:#fff;border-color:var(--pink)}
+.toolbar{display:flex;justify-content:space-between;align-items:center;margin:0 0 25px;font:12px Arial;color:#777}.toolbar select{border:0;color:#777;background:white;padding:5px;outline:none}.view{font-size:20px;color:#999;margin-left:8px}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 18px}
+.product{position:relative;text-align:center;min-width:0}.photo{height:182px;background:#f7f7f7;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.photo img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .25s}.product:hover .photo img{transform:scale(1.06)}
+.flag{position:absolute;top:10px;left:9px;background:var(--pink);color:white;padding:6px 9px;font:10px Arial;z-index:1}.flag.sold{top:38%;left:50%;transform:translate(-50%,-50%);font-size:11px;padding:7px 12px}
+.heart{position:absolute;right:8px;top:8px;background:#fff;border:0;border-radius:50%;width:29px;height:29px;cursor:pointer;color:#9b5b80;font:18px Arial;opacity:0;transition:.2s}.product:hover .heart,.heart.liked{opacity:1}.heart.liked{color:#c22}
+.stars{color:#e5b92f;font:13px Arial;letter-spacing:1px;margin:9px 0 5px}.stars .off{color:#ddd}
+.name{font:12px Arial;line-height:1.4;min-height:30px;color:#38323a}.price{font:13px Arial;color:var(--pink);margin-top:5px}.old{color:#aaa;text-decoration:line-through;font-size:11px;margin-right:5px}
+.add{margin-top:8px;border:1px solid var(--pink);background:white;color:var(--pink);padding:7px 12px;font:10px Arial;cursor:pointer;opacity:0;transition:.2s}.product:hover .add{opacity:1}.add:hover{background:var(--pink);color:white}
+.empty{grid-column:1/-1;text-align:center;padding:50px;color:#888;font:14px Arial}
+footer{background:#f7edf3;text-align:center;padding:28px;color:#776775;font:12px Arial}
+@media(max-width:800px){.head{grid-template-columns:1fr auto;height:auto;padding:16px 18px;gap:12px}.search{grid-column:1/-1;grid-row:2;max-width:none}.logo{text-align:left;font-size:26px}.actions{gap:10px}.topline{padding:0 14px}.topline span:first-child{max-width:65%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}nav{overflow:auto;justify-content:flex-start;white-space:nowrap}nav a{padding:11px 13px}.banner{height:65px;padding:0 18px}main{margin:28px auto;grid-template-columns:1fr;padding:0 15px;gap:22px}.sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px}.side-section{margin:0}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}.photo{height:190px}.toolbar{margin-bottom:16px}}
+@media(max-width:420px){.photo{height:155px}.logo{font-size:23px}.banner h1{font-size:22px}.sidebar{grid-template-columns:1fr 1fr}.name{font-size:11px}.topline{font-size:10px}}
 </style>
 </head>
 <body>
-<header>
-<div class="logo">ELNURA SHOWROOM</div>
-<div>
-<button onclick="favoritesOnly()">♡ <span id="fc">0</span></button>
-<button onclick="openCart()">🛍️ <span id="cc">0</span></button>
-</div>
+<div class="topline"><span>Бесплатная доставка по стране по промокоду «Косметика 2023»</span><span><a href="#">Отследить заказ</a><a href="#">Помощь</a></span></div>
+<header class="head">
+  <form class="search" id="searchForm"><input id="search" placeholder="Поиск товаров..." aria-label="Search products"><button aria-label="Search">⌕</button></form>
+  <div class="logo"><span class="logo-mark">❀</span><b>Brighloss</b></div>
+  <div class="actions"><button class="action" title="Избранное" onclick="showFavorites()">♡</button><button class="action" title="Профиль">♙</button><button class="action" title="Корзина" onclick="showCart()">♧<span class="count" id="cartCount">0</span></button></div>
 </header>
-
-<section class="hero">
-<p>THE ART OF ELEGANCE</p>
-<h1>ELNURA SHOWROOM</h1>
-<p>YOUR STYLE • YOUR BEAUTY • YOUR LUXURY</p>
-<button class="gold" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">SHOP NOW</button>
+<nav><a href="#">Категории⌄</a><a href="#">Маски для лица</a><a href="#">Магазин⌄</a><a href="#">Страницы⌄</a><a href="#">Разделы⌄</a><a href="#">Контакты</a><a href="#">Блог</a></nav>
+<section class="banner"><h1>Магазин</h1><div class="crumb">Главная / Магазин</div></section>
+<main>
+<aside class="sidebar">
+  <section class="side-section"><h3>Категории товаров</h3>
+    <div class="cat" data-cat="Кремы для лица">Кремы для лица <b>＋</b></div>
+    <div class="cat" data-cat="Тени для век">Тени для век <b>＋</b></div>
+    <div class="cat" data-cat="Кисти для макияжа">Кисти для макияжа <b>＋</b></div>
+    <div class="cat" data-cat="Помады">Помады <b>＋</b></div>
+    <div class="cat" data-cat="Уход за кожей">Уход за кожей <b>＋</b></div>
+  </section>
+  <section class="side-section"><h3>Фильтр по цене</h3><input class="range" id="priceRange" type="range" min="10" max="100" value="100"><button class="filter-btn" onclick="render()">ФИЛЬТРОВАТЬ</button><div class="small-note" id="priceLabel">Цена: $10 — $100</div></section>
+  <section class="side-section"><h3>Фильтр по цвету</h3><div class="checks" id="colors">
+    <label><input type="checkbox" value="Синий"> Синий (8)</label><label><input type="checkbox" value="Серый"> Серый (3)</label><label><input type="checkbox" value="Зелёный"> Зелёный (4)</label><label><input type="checkbox" value="Красный"> Красный (6)</label><label><input type="checkbox" value="Жёлтый"> Жёлтый (1)</label><label><input type="checkbox" value="Чёрный"> Чёрный (3)</label><label><input type="checkbox" value="Коричневый"> Коричневый (1)</label>
+  </div></section>
+  <section class="side-section"><h3>Фильтр по размеру</h3><div class="checks"><label><input type="checkbox"> Большой (3)</label><label><input type="checkbox"> Средний (4)</label><label><input type="checkbox"> Маленький (3)</label></div></section>
+  <section class="side-section"><h3>Метки товаров</h3><div class="tags"><button class="tag">аксессуары</button><button class="tag">новинки</button><button class="tag">популярное</button><button class="tag">покупки</button><button class="tag">уход</button></div></section>
+  <section class="side-section"><h3>Фильтр по рейтингу</h3><div class="checks"><label><input type="checkbox" value="5"> ⭐⭐⭐⭐⭐</label><label><input type="checkbox" value="4"> ⭐⭐⭐⭐</label><label><input type="checkbox" value="3"> ⭐⭐⭐</label></div></section>
+</aside>
+<section>
+  <div class="toolbar"><span id="resultCount">Показаны все 150 товаров</span><div><select id="sort"><option value="default">Сортировка по умолчанию</option><option value="low">Сначала дешевле</option><option value="high">Сначала дороже</option><option value="name">По названию</option></select><span class="view">▦ ▫️</span></div></div>
+  <div class="products" id="products"></div>
 </section>
-
-<h2 id="catalog">OUR COLLECTION</h2>
-<div class="controls">
-<input id="search" placeholder="🔍 Товар издөө..." oninput="render()">
-<select id="sort" onchange="render()">
-<option value="default">Сорттоо</option>
-<option value="low">Арзанынан</option>
-<option value="high">Кымбатынан</option>
-</select>
-<select id="limit" onchange="render()">
-<option value="all">Бардык баалар</option>
-<option value="2000">2000 сомго чейин</option>
-<option value="3000">3000 сомго чейин</option>
-<option value="5000">5000 сомго чейин</option>
-</select>
-</div>
-<div class="categories" id="categories"></div>
-<p id="count" style="text-align:center;color:#aaa;padding:10px"></p>
-<div class="grid" id="products"></div>
-
-<footer>
-<h3 style="color:#d5b15c">ELNURA SHOWROOM</h3>
-<p>Elegance is a choice.</p>
-<p>© 2026 ELNURA SHOWROOM</p>
-</footer>
-
-<div class="overlay" id="overlay" onclick="if(event.target===this)closeCart()">
-<div class="panel">
-<h2>🛍️ СЕБЕТ</h2>
-<div id="items"></div>
-<h3 id="total" style="color:#d5b15c;padding:15px"></h3>
-<button class="gold" onclick="checkout()">WHATSAPP ЗАКАЗ</button>
-<button onclick="closeCart()" style="padding:11px;background:#333;color:white;border:0">Жабуу</button>
-</div>
-</div>
-
+</main>
+<footer>BRIGHLOSS · Красота в каждой детали</footer>
 <script>
-const WA="996XXXXXXXXX";
-const categories=[
-{name:"Көйнөк",folder:"dresses",price:2500,photo:"photo-1539008835657-9e8e9680c956"},
-{name:"Шым",folder:"pants",price:1800,photo:"photo-1594633312681-425c7b97ccd1"},
-{name:"Блузка",folder:"blouses",price:1500,photo:"photo-1564257577-5c6d5e9f8c5d"},
-{name:"Юбка",folder:"skirts",price:1900,photo:"photo-1583496661160-fb5886a0aaaa"},
-{name:"Куртка",folder:"jackets",price:3500,photo:"photo-1548126032-079a0fb0099d"}
-];
-const products=[];
-categories.forEach((c,k)=>{
- for(let i=1;i<=50;i++){
- products.push({id:k*50+i,name:c.name+" №"+i,cat:c.name,price:c.price+(i-1)*50,
- img:`https://images.unsplash.com/${c.photo}?auto=format&fit=crop&w=500&q=80`});
- }
-});
-let cart=JSON.parse(localStorage.getItem("elnuraCart")||"[]");
-let fav=JSON.parse(localStorage.getItem("elnuraFav")||"[]");
-let category="Баары",onlyFav=false;
-
-function save(){
- localStorage.setItem("elnuraCart",JSON.stringify(cart));
- localStorage.setItem("elnuraFav",JSON.stringify(fav));
- document.getElementById("cc").textContent=cart.reduce((s,x)=>s+x.qty,0);
- document.getElementById("fc").textContent=fav.length;
-}
-function makeCategories(){
- document.getElementById("categories").innerHTML=["Баары",...categories.map(x=>x.name)].map(x=>
- `<button class="${category===x?'active':''}" onclick="choose('${x}')">${x}</button>`).join("");
-}
-function choose(x){category=x;onlyFav=false;makeCategories();render()}
-function favoritesOnly(){onlyFav=!onlyFav;category="Баары";makeCategories();render()}
+const items=[
+["Дышащий лак для ногтей Andrea",25,4,"Кремы для лица","Розовый","https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500"],
+["Очищающая пенка Botanicals",20,5,"Уход за кожей","Зелёный","https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500"],
+["Тональный крем Clinique",45,4,"Кремы для лица","Коричневый","https://images.unsplash.com/photo-1631730359585-38a4935cbec4?w=500"],
+["Мягкий отшелушивающий скраб",90,3,"Уход за кожей","Синий","https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=500"],
+["Очищающее масло Elatuz",55,4,"Уход за кожей","Жёлтый","https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=500",65],
+["Гель для бровей и ресниц",20,5,"Кисти для макияжа","Чёрный","https://images.unsplash.com/photo-1583241800698-e8ab01830a5d?w=500",30],
+["Тональная основа Facefinity",25,4,"Кремы для лица","Коричневый","https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500"],
+["Увлажняющий крем Interfuse",18,4,"Кремы для лица","Синий","https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500",30],
+["Антибактериальная мицеллярная вода",18,4,"Уход за кожей","Синий","https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=500"],
+["Тональная основа L’Oréal",20,4,"Кремы для лица","Коричневый","https://images.unsplash.com/photo-1631730359585-38a4935cbec4?w=500"],
+["Жидкий хайлайтер L’Oréal",18,3,"Кремы для лица","Розовый","https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=500"],
+["Очищающее масло Mint",42,5,"Уход за кожей","Жёлтый","https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500",50],
+["Матовая помада Miss Rose",11.05,4,"Помады","Розовый","https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500"],
+["Парфюм Mystique",45,4,"Уход за кожей","Коричневый","https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500"],
+["Масло для лица Nykaa",18,5,"Уход за кожей","Розовый","https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=500"],
+["Увлажняющий гель Proteios",18,4,"Уход за кожей","Синий","https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=500",45]
+].map((x,i)=>({id:i,name:x[0],price:x[1],rating:x[2],cat:x[3],color:x[4],img:x[5],old:x[6]||null}));
+let cart=[],favorites=new Set(),category="",favoriteMode=false,cartMode=false;
+const products=document.getElementById("products");
 function render(){
- let q=document.getElementById("search").value.toLowerCase();
- let limit=document.getElementById("limit").value;
- let sort=document.getElementById("sort").value;
- let list=products.filter(p=>(category==="Баары"||p.cat===category)&&(!onlyFav||fav.includes(p.id))&&p.name.toLowerCase().includes(q)&&(limit==="all"||p.price<=+limit));
- if(sort==="low")list.sort((a,b)=>a.price-b.price);
- if(sort==="high")list.sort((a,b)=>b.price-a.price);
- document.getElementById("count").textContent="Товарлар: "+list.length;
- document.getElementById("products").innerHTML=list.length?list.map(p=>`
- <article class="card">
- <img src="${p.img}" alt="${p.name}" loading="lazy">
- <div class="info"><small>${p.cat}</small><h3>${p.name}</h3>
- <p class="price">${p.price.toLocaleString()} сом</p>
- <div class="actions">
- <button onclick="add(${p.id})">Себетке</button>
- <button class="heart" onclick="toggleFav(${p.id})">${fav.includes(p.id)?"❤️":"♡"}</button>
- </div></div></article>`).join(""):"<p>Товар табылган жок</p>";
+ let list=items.filter(p=>(!category||p.cat===category)&&p.price<=Number(document.getElementById("priceRange").value)&&p.name.toLowerCase().includes(document.getElementById("search").value.toLowerCase()));
+ const chosen=[...document.querySelectorAll('#colors input:checked')].map(x=>x.value);
+ if(chosen.length)list=list.filter(p=>chosen.includes(p.color));
+ const ratings=[...document.querySelectorAll('.side-section:last-child input:checked')].map(x=>+x.value);
+ if(ratings.length)list=list.filter(p=>ratings.includes(p.rating));
+ if(favoriteMode)list=list.filter(p=>favorites.has(p.id));
+ if(cartMode)list=list.filter(p=>cart.includes(p.id));
+ const sort=document.getElementById('sort').value;
+ if(sort==='low')list.sort((a,b)=>a.price-b.price);if(sort==='high')list.sort((a,b)=>b.price-a.price);if(sort==='name')list.sort((a,b)=>a.name.localeCompare(b.name));
+ document.getElementById('resultCount').textContent=Найдено товаров: ${list.length};
+ products.innerHTML=list.length?list.map(p=><article class="product"><div class="photo">${p.old&&p.id===0?'<span class="flag sold">НЕТ В НАЛИЧИИ</span>':p.old?'<span class="flag">Скидка!</span>':''}<button class="heart ${favorites.has(p.id)?'liked':''}" onclick="toggleLike(${p.id})">♥️</button><img src="${p.img}" alt="${p.name}" loading="lazy"></div><div class="stars">${'★'.repeat(p.rating)}<span class="off">${'★'.repeat(5-p.rating)}</span></div><div class="name">${p.name}</div><div class="price">${p.old?<span class="old">$${p.old.toFixed(2)}</span>:''}$${p.price.toFixed(2)}</div><button class="add" onclick="addCart(${p.id})">В КОРЗИНУ</button></article>).join(''):'<div class="empty">Товары не найдены.</div>';
+ document.getElementById('cartCount').textContent=cart.length;
 }
-function toggleFav(id){fav=fav.includes(id)?fav.filter(x=>x!==id):[...fav,id];save();render()}
-function add(id){let x=cart.find(a=>a.id===id);if(x)x.qty++;else cart.push({id,qty:1});save();alert("Себетке кошулду")}
-function openCart(){document.getElementById("overlay").style.display="flex";updateCart()}
-function closeCart(){document.getElementById("overlay").style.display="none"}
-function updateCart(){
- document.getElementById("items").innerHTML=cart.length?cart.map(x=>{
- let p=products.find(a=>a.id===x.id);
- return `<div class="line"><span>${p.name} × ${x.qty}</span><span>${p.price*x.qty} сом <button onclick="qty(${p.id},-1)">−</button><button onclick="qty(${p.id},1)">+</button><button onclick="removeItem(${p.id})">×</button></span></div>`;
- }).join(""):"Себет бош";
- document.getElementById("total").textContent="Жалпы: "+cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0).toLocaleString()+" сом";
-}
-function qty(id,n){let x=cart.find(a=>a.id===id);x.qty+=n;if(x.qty<=0)removeItem(id);else{save();updateCart()}}
-function removeItem(id){cart=cart.filter(x=>x.id!==id);save();updateCart()}
-function checkout(){
- if(!cart.length)return alert("Себет бош");
- if(!/^996\d{9}$/.test(WA))return alert("WhatsApp номерин кодго жаз");
- let lines=["Саламатсызбы! Заказ:"];
- cart.forEach(x=>{let p=products.find(a=>a.id===x.id);lines.push(p.name+" × "+x.qty+" = "+p.price*x.qty+" сом")});
- lines.push("Жалпы: "+cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0)+" сом");
- window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(lines.join("\n")),"_blank");
-}
-makeCategories();save();render();
-</script>
-</body>
-</html>
+function toggleLike(id){favorites.has(id)?favorites.delete(id):favorites.add(id);render()}
+function addCart(id){cart.push(id);render();alert('Товар добавлен в корзину!')}
+function showFavorites(){favoriteMode=!favoriteMode;cartMode=false;render()}
+function showCart(){cartMode=!cartMode;favoriteMode=false;render();if(cartMode)alert(cart.length?В корзине товаров: ${cart.length}.:'Корзина пока пуста.')}
+document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();render()});
+document.getElementById('search').addEventListener('input',render);
+document.getElementById('sort').addEventListener('change',render);
+document.getElementById('priceRange').addEventListener('input',e=>{document.getElementById('priceLabel').textContent=Цена: $10 — $${e.target.value};render()});
+document.querySelectorAll('#colors input,.side-section:last-child input').forEach(x=>x.addEventListener('change',render));
+document.querySelectorAll('.cat').forEach(x=>x.addEventListener('click',()=>{category=category===x.dataset.cat?'':x.dataset.cat;render()}));
+document.querySelectorAll('.tag').forEach(x=>x.addEventListener('click',()=>x.classList.toggle('active')));
+
+// Дополнительные товары: всего 150 позиций в каталоге
+const extraNames = [
+"Увлажняющий крем с розой","Осветляющая сыворотка с витамином C","Матовая жидкая помада","Блеск для губ «Бархат»","Водостойкая тушь для объёма","Мягкое средство для умывания","Успокаивающий гель с алоэ вера","Крем для кожи вокруг глаз с пептидами","Сияющий хайлайтер","Шелковистая база под макияж","Питательное масло для волос","Тоник с розовой водой","Стойкий тональный крем бежевый","Гель для укладки бровей","Персиковые румяна","Кокосовый лосьон для тела","Очищающая маска с углём","Сыворотка с гиалуроновой кислотой","Розовая нюдовая помада","Золотистые тени с блёстками","Увлажняющий крем для чувствительной кожи","Мицеллярная вода","Восстанавливающий крем для рук","Консилер с сатиновым финишем","Чёрная водостойкая подводка","Ежедневный солнцезащитный крем SPF","Мягкая пенка для умывания","Бальзам для губ с вишней","Рассыпчатая пудра с эффектом мягкого фокуса","Тушь для удлинения ресниц","Патчи для глаз с огурцом","Ночной коллагеновый крем","Фиксирующий спрей для макияжа","Спрей для лица с лепестками роз","Крем для тела с маслом ши","Капли для сияния кожи","Профессиональный набор кистей для макияжа","Питательное масло для кутикулы","Кремовые матовые румяна","Увлажняющее масло для губ","Осветляющий скраб для лица","Успокаивающая маска с зелёным чаем","Шелковистый гель для душа","Лёгкий BB-крем","База для сияния кожи","Водостойкий карандаш для бровей","Увеличивающий объём блеск для губ","Шампунь для ежедневного ухода","Маска для волос с кератином","Сыворотка для волос с аргановым маслом","Лавандовый лосьон для тела","Свежий цитрусовый парфюм","Парфюмированный спрей с ароматом розы","Тональный крем с бархатным финишем","Пудра с естественным финишем","Золотистый бронзер","Персиковая палетка теней","Карандаш для smoky eyes","Мягкое средство для снятия макияжа","Ночная маска для губ","Масло для лица с витамином E","Увлажняющий гель на каждый день","Очищающая глиняная маска","Успокаивающий гель после загара","Освежающее средство для умывания с мятой","Осветляющая сыворотка для глаз","Шелковистый лосьон для рук","Питательное масло для тела","Классическая красная помада","Помада нюдового оттенка мокко","Коралловые кремовые румяна","Хайлайтер оттенка шампань","Коричневая тушь для ресниц","Точная жидкая подводка","Прозрачный гель для бровей","Набор спонжей для макияжа","Кисть для растушёвки","Скошенная кисть для бровей","Увлажняющая тканевая маска","Полоски для очищения носа","Солнцезащитный крем для лица SPF","Восстанавливающий защитный бальзам","Увлажняющий крем с церамидами","Сыворотка с ниацинамидом","Ночная сыворотка с ретинолом","Мягкий крем для умывания","Тоник для баланса кожи","Сыворотка для ухода за порами","Шампунь с ароматом розы","Увлажняющий кондиционер","Восстанавливающий уход для волос","Лак для блеска волос","Масло для тела с шелковистым финишем","Спрей для тела с ванилью","Цветочная парфюмерная вода","Бальзам для снятия макияжа","Увлажняющий гель-крем","Консилер для области под глазами","Тональный крем плотного покрытия","Нежно-розовый тинт для губ","Ягодный тинт для губ","Глянцевый лак для ногтей","Укрепитель для ногтей","Крем для ухода за кутикулой","Палетка пастельных теней","Бронзовая палетка с шиммером","Набор натуральных накладных ресниц","Сыворотка для ухода за ресницами","Охлаждающий роллер для лица","Нефритовый массажёр для лица","Силиконовая щётка для очищения","Дорожная косметичка","Компактная пудра бежевого оттенка","Рассыпчатая фиксирующая пудра","Кремовый стик для контуринга","Жидкие розовые румяна","Лосьон для сияния кожи тела","Крем с маслом какао","Антисептический гель с алоэ","Ежедневный крем для ног","Спрей для тела с ароматом свежести","Парфюм «Морской бриз»","Парфюм «Сладкий пион»","Ванильный скраб для губ","Мятный уход для губ","Ночная маска для лица","Увлажняющий крем для шеи","Мягкий отшелушивающий тоник","Шампунь для ежедневного баланса","Разглаживающий кондиционер для волос","Термозащитный спрей для волос","Крем для укладки кудрей","Сыворотка для кожи головы","Питательное масло-баттер для волос"
+];
+const extraImages = [
+"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500",
+"https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=500",
+"https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500",
+"https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500",
+"https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500",
+"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=500",
+"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500",
+"https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=500",
+"https://images.unsplash.com/photo-1631730359585-38a4935cbec4?w=500",
+"https://images.unsplash.com/photo-1583241800698-e8ab01830a5d?w=500"
+];
+const extraCats = ["Кремы для лица","Тени для век","Кисти для макияжа","Помады","Уход за кожей"];
+const extraColors = ["Синий","Серый","Зелёный","Красный","Жёлтый","Чёрный","Коричневый","Розовый"];
+extraNames.forEach((name, i) => {
+  items.push({
+    id: items.length,
+    name,
+    price: Number((10 + ((i * 7) % 81) + (i % 4) * 0.25).toFixed(2)),
+    rating: 3 + (i % 3),
+    cat: extraCats[i % extraCats.length],
+    color: extraColors[i % extraColors.length],
+    img: extraImages[i % extraImages.length],
+    old: i % 5 === 0 ? Number((18 + ((i * 5) % 7
