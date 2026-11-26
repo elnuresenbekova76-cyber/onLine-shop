@@ -1,356 +1,289 @@
+
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ky">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ELNURA SHOWROOM</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#faf8f4;color:#40392f}
-header{background:white;text-align:center;padding:27px 10px}
-.logo{font-size:29px;letter-spacing:6px;font-weight:bold}
-.sub{font-size:11px;letter-spacing:4px;color:#a28d76;margin-top:10px}
-nav{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;padding:16px;background:#eee6db}
-nav a{color:#554838;text-decoration:none;font-size:13px}
-.hero{text-align:center;padding:75px 12px;background:linear-gradient(120deg,#e7ddcf,#faf7f1)}
-.hero h1{font-size:32px;letter-spacing:3px}
-.hero p{margin:17px;color:#81715e}
-button{border:0;cursor:pointer;background:#75624d;color:white;padding:12px 18px}
-button:hover{background:#493d30}
-.container{max-width:1300px;margin:auto;padding:25px 15px}
-.title{text-align:center;font-size:25px;letter-spacing:3px;margin:35px 0}
-.search{display:block;width:90%;max-width:430px;padding:14px;margin:20px auto;border:1px solid #d6c8b8}
-.categories{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:25px 0}
-.categories button{background:#e9e1d6;color:#544737;font-size:12px}
-.categories button.active{background:#75624d;color:white}
-.info{text-align:center;color:#917b63;margin:15px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:17px}
-.card{background:white;text-align:center;padding-bottom:17px;position:relative;border:1px solid #eee8df}
-.card img{width:100%;height:250px;object-fit:cover;background:#eee8df}
-.card h3{font-size:14px;margin:12px 5px}
-.catname{font-size:11px;color:#a18b73}
-.price{font-weight:bold;color:#927653;margin:10px}
-.actions{display:flex;justify-content:center;gap:5px;flex-wrap:wrap}
-.actions button{font-size:11px;padding:10px}
-.add{background:#e9e1d6;color:#504536}
-.heart{position:absolute;right:10px;top:10px;background:white;color:#777;font-size:23px;padding:5px 9px;border-radius:50%}
-.heart.liked{color:#d43c52}
-.about{text-align:center;padding:50px 15px;background:#eee6db;line-height:2}
-footer{text-align:center;padding:35px;background:#453b31;color:white;line-height:2}
-.modal{display:none;position:fixed;inset:0;background:#0009;z-index:20;overflow:auto;padding:15px}
-.modal.show{display:flex;align-items:center;justify-content:center}
-.panel{background:#fffaf4;padding:25px;width:100%;max-width:480px;max-height:90vh;overflow:auto;position:relative}
-.panel h2{text-align:center;margin-bottom:20px}
-.close{position:absolute;right:12px;top:8px;background:none;color:#333;font-size:25px}
-.panel input,.panel textarea{width:100%;padding:13px;margin:7px 0;border:1px solid #d8cbbb}
-.panel button.full{width:100%;margin-top:12px}
-.cartrow{padding:12px 0;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;gap:10px;align-items:center}
-.cartrow button{padding:7px}
-.total{text-align:center;font-weight:bold;margin:20px}
-.empty{text-align:center;padding:25px}
-.success{text-align:center;line-height:2;padding:20px}
-@media(max-width:500px){
-.logo{font-size:21px;letter-spacing:3px}
-.hero h1{font-size:25px}
-.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-.card img{height:180px}
-.card h3{font-size:12px}
-.actions button{font-size:9px;padding:9px 6px}
+body{
+ background:#090909;
+ color:#fff;
+ font-family:Arial,sans-serif;
+}
+header{
+ background:#111;
+ padding:22px 5%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ border-bottom:1px solid #b89545;
+ position:sticky;top:0;z-index:10;
+}
+.logo{
+ color:#d6b45b;
+ font-size:25px;
+ font-weight:bold;
+ letter-spacing:3px;
+}
+header button,.gold{
+ background:#c6a34d;
+ color:#080808;
+ border:0;padding:10px 15px;
+ border-radius:5px;
+ cursor:pointer;font-weight:bold;
+}
+.hero{
+ text-align:center;
+ padding:65px 15px;
+ background:linear-gradient(135deg,#161616,#080808);
+}
+.hero h1{
+ color:#d6b45b;
+ font-size:38px;
+ letter-spacing:4px;
+}
+.hero p{color:#aaa;margin:15px}
+.controls{
+ padding:20px 5%;
+ display:flex;gap:10px;flex-wrap:wrap;
+}
+input,select{
+ padding:13px;background:#191919;
+ color:white;border:1px solid #9c7b36;
+ border-radius:5px;flex:1;min-width:150px;
+}
+.grid{
+ padding:10px 5% 40px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:20px;
+}
+.card{
+ background:#151515;
+ border:1px solid #292929;
+ border-radius:8px;overflow:hidden;
+}
+.card img{
+ width:100%;height:260px;
+ object-fit:cover;display:block;
+}
+.info{padding:14px}
+.info h3{font-size:16px;margin-bottom:10px}
+.price{color:#d6b45b;font-weight:bold}
+.actions{
+ display:flex;gap:7px;margin-top:12px;
+}
+.actions button{
+ flex:1;padding:10px 5px;
+ border:0;border-radius:4px;
+ cursor:pointer;background:#c6a34d;
+ font-weight:bold;
+}
+.actions .heart{background:#292929;color:#fff}
+.section-title{
+ text-align:center;color:#d6b45b;
+ padding:20px;font-size:25px;
+}
+footer{
+ text-align:center;padding:30px;
+ border-top:1px solid #b89545;color:#aaa;
+}
+#cartPanel{
+ display:none;position:fixed;inset:0;
+ background:#000c;z-index:20;
+ justify-content:center;align-items:center;
+ padding:15px;
+}
+.cart{
+ background:#171717;padding:25px;
+ border:1px solid #c6a34d;
+ width:100%;max-width:450px;
+ max-height:85vh;overflow:auto;
+ border-radius:10px;
+}
+.cart button{padding:10px;margin:5px;cursor:pointer}
+.cart-row{
+ padding:12px 0;border-bottom:1px solid #444;
+ display:flex;justify-content:space-between;gap:10px;
+}
+@media(max-width:850px){
+ .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+ .grid{gap:10px;padding:10px}
+ .card img{height:190px}
+ .hero h1{font-size:27px}
+ header{padding:15px}
+ .logo{font-size:18px}
 }
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo">ELNURA SHOWROOM</div>
-<div class="sub">ELEGANCE • BEAUTY • STYLE</div>
+ <div class="logo">ELNURA SHOWROOM</div>
+ <button onclick="openCart()">🛍️ Себет <span id="count">0</span></button>
 </header>
 
-<nav>
-<a href="#home">ГЛАВНАЯ</a>
-<a href="#shop">КАТАЛОГ</a>
-<a href="#about">О НАС</a>
-<a href="#" onclick="showFavorites();return false">❤️ ИЗБРАННОЕ</a>
-<a href="#" onclick="openCart();return false">🛒 КОРЗИНА (<span id="cartCount">0</span>)</a>
-</nav>
-
-<section class="hero" id="home">
-<h1>YOUR STYLE, YOUR BEAUTY</h1>
-<p>Открой для себя мир элегантности</p>
-<button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">СМОТРЕТЬ КОЛЛЕКЦИЮ</button>
+<section class="hero">
+ <h1>ELNURA SHOWROOM</h1>
+ <p>YOUR STYLE • YOUR BEAUTY • YOUR LUXURY</p>
+ <button class="gold" onclick="document.getElementById('products').scrollIntoView()">Сатып алуу</button>
 </section>
 
-<main class="container" id="shop">
-<h2 class="title">НАША КОЛЛЕКЦИЯ</h2>
-<input class="search" id="search" placeholder="Поиск товаров..." oninput="render()">
-<div class="categories" id="categories"></div>
-<div class="info" id="info"></div>
-<div class="products" id="products"></div>
-</main>
+<h2 class="section-title">OUR COLLECTION</h2>
 
-<section class="about" id="about">
-<h2>О ELNURA SHOWROOM</h2>
-<p>Стильная одежда и аксессуары для тебя.</p>
-<p>Красота в простоте. Элегантность в деталях.</p>
-</section>
+<div class="controls">
+ <input id="search" placeholder="🔍 Товар издөө..." oninput="render()">
+ <select id="category" onchange="render()">
+  <option value="all">Бардык товарлар</option>
+  <option value="Көйнөк">Көйнөк</option>
+  <option value="Шым">Шым</option>
+  <option value="Блузка">Блузка</option>
+  <option value="Юбка">Юбка</option>
+  <option value="Куртка">Куртка</option>
+ </select>
+ <button class="gold" onclick="showFavorites()">❤️ Избранное</button>
+</div>
+
+<div class="grid" id="products"></div>
+
+<div id="cartPanel">
+ <div class="cart">
+  <h2 style="color:#d6b45b">🛍️ Сиздин себетиңиз</h2>
+  <div id="cartItems"></div>
+  <h3 id="total" style="margin:15px 0;color:#d6b45b"></h3>
+  <button class="gold" onclick="checkout()">WhatsApp заказ</button>
+  <button onclick="closeCart()" style="background:#333;color:white">Жабуу</button>
+ </div>
+</div>
 
 <footer>
-<h2>ELNURA SHOWROOM</h2>
-<p>ELEGANCE • BEAUTY • STYLE</p>
-<p>© 2026 ELNURA SHOWROOM</p>
+ <h3 style="color:#d6b45b">ELNURA SHOWROOM</h3>
+ <p>Сиздин сулуулугуңуз — биздин сыймыгыбыз.</p>
 </footer>
 
-<div class="modal" id="cartModal">
-<div class="panel">
-<button class="close" onclick="closeModal('cartModal')">×</button>
-<h2>🛒 МОЯ КОРЗИНА</h2>
-<div id="cartItems"></div>
-<div class="total" id="cartTotal"></div>
-<button class="full" onclick="checkout()">ОФОРМИТЬ ЗАКАЗ</button>
-</div>
-</div>
-
-<div class="modal" id="orderModal">
-<div class="panel">
-<button class="close" onclick="closeModal('orderModal')">×</button>
-<h2>ОФОРМЛЕНИЕ ЗАКАЗА</h2>
-<div id="orderList"></div>
-<form id="orderForm">
-<input id="name" placeholder="Ваше имя" required>
-<input id="phone" type="tel" placeholder="Номер телефона" required>
-<textarea id="address" placeholder="Адрес доставки" required></textarea>
-<button class="full" type="submit">ПОДТВЕРДИТЬ ЗАКАЗ</button>
-</form>
-<div id="success" class="success" style="display:none"></div>
-</div>
-</div>
-
 <script>
-// КАТЕГОРИИ И ИЗОБРАЖЕНИЯ
-const categories=[
-{name:"Платья",tag:"women,dress"},
-{name:"Костюмы",tag:"women,suit"},
-{name:"Блузки",tag:"women,blouse"},
-{name:"Футболки",tag:"women,tshirt"},
-{name:"Брюки",tag:"women,trousers"},
-{name:"Юбки",tag:"women,skirt"},
-{name:"Джинсы",tag:"women,jeans"},
-{name:"Верхняя одежда",tag:"women,coat"},
-{name:"Сумки",tag:"women,handbag"},
-{name:"Обувь",tag:"women,shoes"},
-{name:"Аксессуары",tag:"fashion,accessories"}
+// WhatsApp номериңди ушул жерге жаз.
+const WHATSAPP = "996XXXXXXXXX";
+
+// Ар бир товарга өзүнчө сүрөт URL коюлат.
+// Азырынча демо сүрөттөр.
+const products = [
+ {id:1,name:"Классикалык көйнөк",cat:"Көйнөк",price:2500,img:"https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600"},
+ {id:2,name:"Ак шым",cat:"Шым",price:1800,img:"https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600"},
+ {id:3,name:"Аялдардын блузкасы",cat:"Блузка",price:1500,img:"https://images.unsplash.com/photo-1564257577-5c6d5e9f8c5d?w=600"},
+ {id:4,name:"Кара юбка",cat:"Юбка",price:1900,img:"https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600"},
+ {id:5,name:"Күзгү куртка",cat:"Куртка",price:3500,img:"https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=600"},
+ {id:6,name:"Кечки көйнөк",cat:"Көйнөк",price:3200,img:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600"},
+ {id:7,name:"Кең шым",cat:"Шым",price:2100,img:"https://images.unsplash.com/photo-1506629905607-d9b1b7e6f6b9?w=600"},
+ {id:8,name:"Жеңил блузка",cat:"Блузка",price:1700,img:"https://images.unsplash.com/photo-1608234807905-4466023792f5?w=600"}
 ];
 
-const names={
-"Платья":["Элегантное платье","Бежевое платье","Белое платье","Вечернее платье","Летнее платье","Классическое платье","Платье миди","Платье макси","Повседневное платье","Платье с поясом"],
-"Костюмы":["Классический костюм","Бежевый костюм","Женский костюм","Деловой костюм","Костюм двойка","Костюм с жакетом","Летний костюм","Костюм oversize","Элегантный костюм","Брючный костюм"],
-"Блузки":["Белая блузка","Бежевая блузка","Шёлковая блузка","Классическая блузка","Блузка с воротником","Блузка oversize","Лёгкая блузка","Романтичная блузка","Нарядная блузка","Блузка с рукавами"],
-"Футболки":["Белая футболка","Базовая футболка","Футболка oversize","Бежевая футболка","Чёрная футболка","Футболка с принтом","Хлопковая футболка","Свободная футболка","Классическая футболка","Укороченная футболка"],
-"Брюки":["Классические брюки","Широкие брюки","Бежевые брюки","Брюки палаццо","Чёрные брюки","Брюки прямого кроя","Брюки с поясом","Летние брюки","Брюки с высокой талией","Свободные брюки"],
-"Юбки":["Длинная юбка","Юбка миди","Классическая юбка","Джинсовая юбка","Бежевая юбка","Чёрная юбка","Юбка плиссе","Юбка макси","Юбка с поясом","Юбка прямого кроя"],
-"Джинсы":["Голубые джинсы","Классические джинсы","Широкие джинсы","Синие джинсы","Чёрные джинсы","Джинсы прямого кроя","Джинсы mom fit","Джинсы wide leg","Джинсы с высокой талией","Повседневные джинсы"],
-"Верхняя одежда":["Бежевый тренч","Классическое пальто","Женская куртка","Тёплый кардиган","Длинное пальто","Демисезонная куртка","Стильный жакет","Пальто oversize","Лёгкий плащ","Короткая куртка"],
-"Сумки":["Женская сумка","Бежевая сумка","Классическая сумка","Мини-сумка","Повседневная сумка","Сумка через плечо","Кожаная сумка","Элегантная сумка","Маленькая сумка","Сумка шоппер"],
-"Обувь":["Белые кроссовки","Классические туфли","Женские босоножки","Бежевые туфли","Модные ботинки","Кеды","Балетки","Летние сандалии","Классические сапоги","Повседневная обувь"],
-"Аксессуары":["Золотые серьги","Жемчужное колье","Стильные очки","Женский ремень","Наручные часы","Шёлковый платок","Золотой браслет","Кошелёк","Минималистичное кольцо","Модная заколка"]
-};
+let cart = JSON.parse(localStorage.getItem("cart")||"[]");
+let favorites = JSON.parse(localStorage.getItem("favorites")||"[]");
+let onlyFavorites = false;
 
-const prices={
-"Платья":2500,"Костюмы":4200,"Блузки":1600,
-"Футболки":950,"Брюки":2000,"Юбки":1800,
-"Джинсы":2300,"Верхняя одежда":4500,
-"Сумки":2500,"Обувь":3200,"Аксессуары":900
-};
-
-// ТОВАРЛАРДЫ ТҮЗҮҮ
-// Ар бир товар үчүн өзүнчө сүрөт URL жана уникалдуу lock колдонулат.
-let products=[];
-let id=0;
-
-categories.forEach(cat=>{
- for(let i=1;i<=50;i++){
-  id++;
-  const list=names[cat.name];
-  products.push({
-   id:id,
-   name:list[(i-1)%10]+" №"+String(i).padStart(2,"0"),
-   category:cat.name,
-   price:prices[cat.name]+((i-1)%5)*100,
-   image:https://loremflickr.com/600/800/${cat.tag}?lock=${id+1000}
-  });
- }
-});
-
-let selected="Все товары";
-let favorites=JSON.parse(localStorage.getItem("elnura_favorites")||"[]");
-let cart=JSON.parse(localStorage.getItem("elnura_cart")||"[]");
-let favoriteMode=false;
-
-const categoryBox=document.getElementById("categories");
-
-["Все товары",...categories.map(c=>c.name)].forEach(cat=>{
- let b=document.createElement("button");
- b.textContent=cat;
- if(cat===selected)b.classList.add("active");
- b.onclick=()=>{
-  selected=cat;
-  favoriteMode=false;
-  document.querySelectorAll(".categories button").forEach(x=>x.classList.remove("active"));
-  b.classList.add("active");
-  render();
- };
- categoryBox.appendChild(b);
-});
+function save(){
+ localStorage.setItem("cart",JSON.stringify(cart));
+ localStorage.setItem("favorites",JSON.stringify(favorites));
+ document.getElementById("count").textContent=
+ cart.reduce((s,p)=>s+p.qty,0);
+}
 
 function render(){
- const q=document.getElementById("search").value.toLowerCase();
- let filtered=products.filter(p=>
- (selected==="Все товары"||p.category===selected)&&
- (p.name.toLowerCase().includes(q)||p.category.toLowerCase().includes(q))
+ const search=document.getElementById("search").value.toLowerCase();
+ const cat=document.getElementById("category").value;
+ const list=products.filter(p=>
+ p.name.toLowerCase().includes(search)&&
+ (cat==="all"||p.cat===cat)&&
+ (!onlyFavorites||favorites.includes(p.id))
  );
- if(favoriteMode)filtered=filtered.filter(p=>favorites.includes(p.id));
-
- document.getElementById("info").textContent=
- "Товаров: "+filtered.length+" | Всего: 550";
-
- document.getElementById("products").innerHTML=filtered.map(p=>`
+ document.getElementById("products").innerHTML=list.map(p=>`
  <div class="card">
- <button class="heart ${favorites.includes(p.id)?"liked":""}" onclick="toggleLike(${p.id})">
- ${favorites.includes(p.id)?"♥️":"♡"}
- </button>
- <img src="${p.image}" alt="${p.category} ${p.name}" loading="lazy"
- onerror="this.src='https://placehold.co/400x500/e9e1d6/74624e?text=${encodeURIComponent(p.category)}'">
- <div class="catname">${p.category}</div>
+ <img src="${p.img}" alt="${p.name}" loading="lazy">
+ <div class="info">
  <h3>${p.name}</h3>
- <div class="price">${p.price.toLocaleString("ru-RU")} сом</div>
+ <p class="price">${p.price.toLocaleString()} сом</p>
  <div class="actions">
- <button onclick="buy(${p.id})">ЗАКАЗАТЬ</button>
- <button class="add" onclick="addCart(${p.id});openCart()">В КОРЗИНУ</button>
+ <button onclick="addCart(${p.id})">Себетке</button>
+ <button class="heart" onclick="toggleFav(${p.id})">
+ ${favorites.includes(p.id)?"❤️":"♡"}
+ </button>
  </div>
  </div>
- `).join("");
-}
-
-function toggleLike(id){
- if(favorites.includes(id)){
-  favorites=favorites.filter(x=>x!==id);
- }else{
-  favorites.push(id);
- }
- localStorage.setItem("elnura_favorites",JSON.stringify(favorites));
- render();
-}
-
-function showFavorites(){
- selected="Все товары";
- favoriteMode=true;
- document.getElementById("shop").scrollIntoView({behavior:"smooth"});
- render();
-}
-
-function updateCount(){
- document.getElementById("cartCount").textContent=
- cart.reduce((s,p)=>s+p.qty,0);
- localStorage.setItem("elnura_cart",JSON.stringify(cart));
+ </div>`).join("");
 }
 
 function addCart(id){
- let found=cart.find(p=>p.id===id);
- if(found)found.qty++;
- else cart.push({...products.find(p=>p.id===id),qty:1});
- updateCount();
+ let item=cart.find(p=>p.id===id);
+ if(item)item.qty++;
+ else cart.push({id,qty:1});
+ save();
+ alert("Товар себетке кошулду!");
 }
 
-function buy(id){
- addCart(id);
- openCart();
+function toggleFav(id){
+ favorites=favorites.includes(id)?
+ favorites.filter(x=>x!==id):[...favorites,id];
+ save();render();
+}
+
+function showFavorites(){
+ onlyFavorites=!onlyFavorites;
+ render();
 }
 
 function openCart(){
- renderCart();
- document.getElementById("cartModal").classList.add("show");
+ document.getElementById("cartPanel").style.display="flex";
+ updateCart();
 }
-
-function renderCart(){
- let box=document.getElementById("cartItems");
- if(!cart.length){
-  box.innerHTML="<div class='empty'>Ваша корзина пока пуста 🤍</div>";
-  document.getElementById("cartTotal").textContent="";
-  return;
- }
- box.innerHTML=cart.map(p=>`
- <div class="cartrow">
- <div><b>${p.name}</b><br>${p.price} сом<br>
- Количество: ${p.qty}</div>
- <div>
- <button onclick="changeQty(${p.id},-1)">−</button>
- <button onclick="changeQty(${p.id},1)">+</button>
- <button onclick="removeItem(${p.id})">×</button>
- </div>
- </div>
- `).join("");
- document.getElementById("cartTotal").textContent=
- "ИТОГО: "+cart.reduce((s,p)=>s+p.price*p.qty,0).toLocaleString("ru-RU")+" сом";
+function closeCart(){
+ document.getElementById("cartPanel").style.display="none";
 }
-
-function changeQty(id,n){
- let p=cart.find(x=>x.id===id);
- if(!p)return;
- p.qty+=n;
- if(p.qty<=0)removeItem(id);
- else{updateCount();renderCart();}
+function updateCart(){
+ const items=document.getElementById("cartItems");
+ items.innerHTML=cart.map(p=>{
+ const product=products.find(x=>x.id===p.id);
+ if(!product)return "";
+ return `<div class="cart-row">
+ <span>${product.name} × ${p.qty}</span>
+ <span>${(product.price*p.qty).toLocaleString()} сом
+ <button onclick="removeItem(${p.id})">✕</button></span>
+ </div>`;
+ }).join("");
+ let total=cart.reduce((s,p)=>{
+ let x=products.find(a=>a.id===p.id);
+ return s+(x?x.price*p.qty:0);
+ },0);
+ document.getElementById("total").textContent=
+ "Жалпы: "+total.toLocaleString()+" сом";
 }
-
 function removeItem(id){
  cart=cart.filter(p=>p.id!==id);
- updateCount();
- renderCart();
+ save();updateCart();
 }
-
 function checkout(){
- if(!cart.length){alert("Корзина пуста!");return;}
- closeModal("cartModal");
- document.getElementById("orderList").innerHTML=
- cart.map(p=><p>${p.name} × ${p.qty} — ${p.price*p.qty} сом</p>).join("")+
- <p class="total">Итого: ${cart.reduce((s,p)=>s+p.price*p.qty,0)} сом</p>;
- document.getElementById("orderForm").style.display="block";
- document.getElementById("success").style.display="none";
- document.getElementById("orderModal").classList.add("show");
+ if(!cart.length){alert("Себет бош!");return;}
+ if(WHATSAPP==="996XXXXXXXXX"){
+ alert("Коддогу WHATSAPP номерин өзүңдүн номериңе алмаштыр.");
+ return;
+ }
+ let msg="Саламатсызбы! Заказ бергим келет:%0A";
+ cart.forEach(p=>{
+ let x=products.find(a=>a.id===p.id);
+ if(x)msg+=`${encodeURIComponent(x.name)} x ${p.qty} = ${x.price*p.qty} сом%0A`;
+ });
+ let total=cart.reduce((s,p)=>{
+ let x=products.find(a=>a.id===p.id);
+ return s+(x?x.price*p.qty:0);
+ },0);
+ msg+=`Жалпы: ${total} сом`;
+ window.open("https://wa.me/"+WHATSAPP+"?text="+msg,"_blank");
 }
-
-document.getElementById("orderForm").onsubmit=function(e){
- e.preventDefault();
- const order={
-  number:"ELN-"+Date.now(),
-  name:document.getElementById("name").value,
-  phone:document.getElementById("phone").value,
-  address:document.getElementById("address").value,
-  items:cart,
-  date:new Date().toLocaleString()
- };
- let orders=JSON.parse(localStorage.getItem("elnura_orders")||"[]");
- orders.push(order);
- localStorage.setItem("elnura_orders",JSON.stringify(orders));
- cart=[];
- updateCount();
- document.getElementById("orderForm").style.display="none";
- document.getElementById("orderList").innerHTML="";
- document.getElementById("success").style.display="block";
- document.getElementById("success").innerHTML=`
- <h2>✓</h2>
- <h3>Ваш заказ успешно оформлен!</h3>
- <p>Номер заказа: ${order.number}</p>
- <p>Спасибо за покупку, ${order.name}!</p>
- <button class="full" onclick="closeModal('orderModal')">ЗАКРЫТЬ</button>`;
-};
-
-function closeModal(id){
- document.getElementById(id).classList.remove("show");
-}
-
-document.getElementById("search").addEventListener("input",render);
-
-updateCount();
+save();
 render();
 </script>
 </body>
